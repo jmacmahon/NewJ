@@ -8,7 +8,7 @@ public class MainFrame extends JFrame {
 	MyMouseListener mL;
 	
 	MainFrame() {
-		this.setSize(200,200);
+		this.setSize(400,400);
 		this.setLocation(200,200);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("The Worlds Greatest IDE");
