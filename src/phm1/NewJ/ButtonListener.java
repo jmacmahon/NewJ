@@ -14,10 +14,13 @@ public class ButtonListener implements ActionListener {
 		String action = a.getActionCommand();
 		
 		if(action.equals("newClass")){
-			//new class
+			System.out.println("newwwwww");
 		}
 		else if(action.equals("compile")){
-			//compile
+			System.out.println("compile");
+		}
+		else if(action.equals("clear")){
+			System.out.println("cleaaaaar");
 		}
 		
 	}

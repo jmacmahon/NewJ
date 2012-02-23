@@ -13,9 +13,9 @@ public class ButtonPanel extends JPanel{
 		newClassButton = new JButton("newClass");
 		compileButton = new JButton("compile");
 		clearButton = new JButton("clear");
-		this.add(newClassButton);
-		this.add(compileButton);
-		this.add(clearButton);
+		this.add(newClassButton, BorderLayout.NORTH);
+		this.add(compileButton, BorderLayout.CENTER);
+		this.add(clearButton, BorderLayout.SOUTH);
 		newClassButton.addActionListener(bList);
 		compileButton.addActionListener(bList);
 		clearButton.addActionListener(bList);
