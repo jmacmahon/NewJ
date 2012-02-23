@@ -24,4 +24,10 @@ public class NJClass {
 	public void setMethods(ArrayList<NJMethod> methods) {
 		this.methods = methods;
 	}
+	
+	NJClass(String name, ArrayList<NJField> fields, ArrayList<NJMethod> methods){
+		this.setName(name);
+		this.setFields(fields);
+		this.setMethods(methods);
+	}
 }

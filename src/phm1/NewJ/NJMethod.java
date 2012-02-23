@@ -12,4 +12,11 @@ public class NJMethod extends NJAbstractProperty {
 	public void setArguments(ArrayList<NJArgument> arguments) {
 		this.arguments = arguments;
 	}
+	
+	NJMethod(String name, String type, int accessModifier, ArrayList<NJArgument> arguments){
+		this.setName(name);
+		this.setType(type);
+		this.setAccessModifier(accessModifier);
+		this.setArguments(arguments);
+	}
 }
