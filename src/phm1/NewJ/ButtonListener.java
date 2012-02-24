@@ -15,12 +15,15 @@ public class ButtonListener implements ActionListener {
 		
 		if(action.equals("newClass")){
 			System.out.println("newwwwww");
+			//pop up box asking for name of class
 		}
 		else if(action.equals("compile")){
 			System.out.println("compile");
+			//compile the code, duh
 		}
 		else if(action.equals("clear")){
 			System.out.println("cleaaaaar");
+			//TODO clear the screen of all classes - delete files as well? or separate delete button
 		}
 		
 	}

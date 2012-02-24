@@ -8,7 +8,7 @@ public class ButtonPanel extends JPanel{
 	JButton newClassButton, compileButton, clearButton; 
 	
 	public ButtonPanel() {
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.setLayout(new GridLayout(10, 1));
 		this.setSize(100, 200);
 		ButtonListener bList = new ButtonListener(this);
 		
@@ -17,10 +17,8 @@ public class ButtonPanel extends JPanel{
 		compileButton = new JButton("compile");
 		clearButton = new JButton("clear");
 		
-		//put the buttons in the middle of the panel
-		newClassButton.setAlignmentX(this.CENTER_ALIGNMENT);
-		compileButton.setAlignmentX(this.CENTER_ALIGNMENT);
-		clearButton.setAlignmentX(this.CENTER_ALIGNMENT);
+		
+
 		
 		//add the buttons 
 		this.add(newClassButton);

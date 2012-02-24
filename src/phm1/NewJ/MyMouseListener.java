@@ -2,7 +2,7 @@ package phm1.NewJ;
 import java.awt.event.*;
 
 public class MyMouseListener implements MouseListener{
-
+//TODO add mouse position listener
 	private DiagramPanel dP = new DiagramPanel();
 	private ButtonPanel bP = new ButtonPanel();
 	
