@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 	DiagramPanel dPanel = new DiagramPanel();
-	ButtonPanel bPanel = new ButtonPanel();
+	ButtonPanel bPanel = new ButtonPanel(dPanel);
 	MyMouseListener mL;
 	
 	MainFrame() {

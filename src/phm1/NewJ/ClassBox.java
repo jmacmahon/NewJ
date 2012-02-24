@@ -22,5 +22,10 @@ public class ClassBox extends JComponent {
 	public double distanceTo(double x, double y) {
 		return (Math.abs(this.x-x) + Math.abs(this.y-y));
 	}
+	
+	public void update(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
 
 }
