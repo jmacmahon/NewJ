@@ -31,36 +31,25 @@ public class VectorOfBoxes {
 	}
 	
 	public void deleteAll() {
-		for(int i=0; i < boxes.size(); i++){
-			boxes.remove(i); //still doesn't work - p
-		}
+		boxes.clear();
 	}
 	
 	public ClassBox clickedInBox(int x, int y) {
 		//finds the box that has been clicked on, if any - p
 		int xPlusA;
 		int yPlusB;
-		ClassBox c;
-		int index = -1;
-		for (int i = 0; i < boxes.size(); i++){ //loop through boxes - p
-			c= boxes.get(i);
+		for (ClassBox c : boxes){ //loop through boxes - p
 
 			xPlusA = c.getX()+c.getA();
 			yPlusB = c.getY()+c.getB();
 			
 			if ((c.getX() < x) && (x < xPlusA) && (c.getY() < y) && (y < yPlusB)) {
-				//sets index to the position of the box in the vector if one is clicked on - p
-				index = i;				
+				// We found it! Let's get outta here - J
+				return c;
 			}
 		}
-		
-		//return a box if there is one, or null if clicked in blank space - p
-		if ( index >=0) {
-			return boxes.get(index);
-		}
-		else {
-			return null;
-		}		
+		// Just return null if we didn't return earlier - J
+		return null;
 	}
 	
 	

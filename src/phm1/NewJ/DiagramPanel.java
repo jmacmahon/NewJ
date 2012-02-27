@@ -26,7 +26,7 @@ public class DiagramPanel extends JPanel{
 	
 	public void deleteAll() {
 		vOfB.deleteAll();
-		repaint(); //TODO this doesn't work yet
+		repaint();
 	}
 	
 	public ClassBox findNearestClass(int x, int y) {

@@ -28,8 +28,7 @@ public class ButtonListener implements ActionListener {
 			//compile the code, duh
 		}
 		else if(action.equals("clear")){ //change to delete all
-			
-			//this is the shit that happens when you click the clear button
+			dP.deleteAll();
 			//TODO clear the screen of all classes - delete files as well? or separate delete button
 		}
 		
