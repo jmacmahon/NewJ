@@ -16,8 +16,8 @@ public class DiagramPanel extends JPanel{
 		super.paintComponent(g);
 		vOfB.drawAll(g);
 	}
-	public void addClass(int x, int y) {
-		vOfB.addBox(new ClassBox(x, y));
+	public void addClass(int x, int y, int a, int b) {
+		vOfB.addBox(new ClassBox(x, y, a, b));
 		repaint();
 	}
 	
@@ -27,7 +27,8 @@ public class DiagramPanel extends JPanel{
 	}
 	
 	public ClassBox findNearestClass(int x, int y) {
-		ClassBox c = vOfB.findNearestBox(x, y);
+		ClassBox c;
+		c = vOfB.clickedInBox(x, y);
 		repaint();
 		return c;
 	}

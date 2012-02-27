@@ -37,17 +37,44 @@ public class VectorOfBoxes {
 		}
 	}
 	
-	public ClassBox findNearestBox(int x, int y){
+	public ClassBox clickedInBox(int x, int y) {
+		int xPlusA;
+		int yPlusB;
 		ClassBox c;
-		double minDist = Double.MAX_VALUE;
+		int index = -1;
+		for (int i = 0; i < boxes.size(); i++){
+			c= boxes.get(i);
+
+			xPlusA = c.getX()+c.getA();
+			yPlusB = c.getY()+c.getB();
+			
+			if ((c.getX() < x) && (x < xPlusA) && (c.getY() < y) && (y < yPlusB)) {
+				index = i;				
+			}
+		}
+		
+		if ( index >=0) {
+			return boxes.get(index);
+		}
+		else {
+			return null;
+		}		
+	}
+	
+	
+	
+/*	public ClassBox findNearestBox(int x, int y){
+		ClassBox c;
+		int minDist = 2;
 		int minDistIndex = -1;
 
 		for(int i=0; i < boxes.size(); i++) {
-			c = (ClassBox)(boxes.get(i));
+			c = (boxes.get(i));
 			if(c.distanceTo(x,y) < minDist) {
 				minDist = c.distanceTo(x,y);
 				minDistIndex = i;
 			}
+
 		}
 		if((minDistIndex >= 0) && (minDist < 30)) {
 			return boxes.get(minDistIndex);
@@ -57,4 +84,5 @@ public class VectorOfBoxes {
 			return null;
 		}
 	}
+	*/
 }

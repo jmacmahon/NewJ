@@ -16,7 +16,10 @@ public class ButtonListener implements ActionListener {
 		String action = a.getActionCommand();
 		
 		if(action.equals("newClass")){
-			dP.addClass(100, 200); //TODO put the box somewhere useful
+			dP.addClass(100, 100, 100, 100);
+			//TODO put the box somewhere useful - maybe work out where is blank on the screen
+			//TODO work out a sensible size for the box based on input text
+			//TODO add an input dialog for taking input text
 		}
 		else if(action.equals("compile")){
 			System.out.println("compile");
