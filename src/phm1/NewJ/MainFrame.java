@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+	//not much that is too confusing going on in here hopefully - P
 	DiagramPanel dPanel = new DiagramPanel();
 	ButtonPanel bPanel = new ButtonPanel(dPanel);
 	MyMouseListener mL;
