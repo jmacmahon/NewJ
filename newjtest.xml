@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.6.0_24" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="phm1.NewJ.NJClass">
+    <void property="fields">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="phm1.NewJ.NJField">
+        <void property="accessModifier">
+         <object class="java.lang.Enum" method="valueOf">
+          <class>phm1.NewJ.NJAccessModifier</class>
+          <string>PRIVATE</string>
+         </object>
+        </void>
+        <void property="name">
+         <string>test</string>
+        </void>
+        <void property="type">
+         <string>int</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="methods">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="phm1.NewJ.NJMethod">
+        <void property="accessModifier">
+         <object class="java.lang.Enum" method="valueOf">
+          <class>phm1.NewJ.NJAccessModifier</class>
+          <string>PUBLIC</string>
+         </object>
+        </void>
+        <void property="arguments">
+         <object class="java.util.ArrayList">
+          <void method="add">
+           <object class="phm1.NewJ.NJArgument">
+            <void property="name">
+             <string>herpaderp</string>
+            </void>
+            <void property="type">
+             <string>String</string>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="name">
+         <string>aMethod</string>
+        </void>
+        <void property="type">
+         <string>void</string>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="name">
+     <string>TestName</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

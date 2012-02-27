@@ -30,4 +30,6 @@ public class NJClass {
 		this.setFields(fields);
 		this.setMethods(methods);
 	}
+	
+	public NJClass(){}
 }

@@ -1,17 +1,14 @@
 package phm1.NewJ;
 
 public abstract class NJAbstractProperty extends NJObject {
-	public static final int PUBLIC = 0;
-	public static final int PRIVATE = 1;
-	public static final int PROTECTED = 2;
 	
-	private int accessModifier;
+	private NJAccessModifier accessModifier;
 
-	public int getAccessModifier() {
+	public NJAccessModifier getAccessModifier() {
 		return accessModifier;
 	}
 
-	public void setAccessModifier(int accessModifier) {
+	public void setAccessModifier(NJAccessModifier accessModifier) {
 		this.accessModifier = accessModifier;
 	}
 }

@@ -5,4 +5,5 @@ public class NJArgument extends NJObject {
 		this.setName(name);
 		this.setType(type);
 	}
+	public NJArgument(){}
 }
