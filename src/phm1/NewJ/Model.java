@@ -15,16 +15,18 @@ public class Model {
 		this.classes = classes;
 	}
 	
+	Model(){
+		setClasses(new ArrayList<NJClass>());
+	}
+	
 	public void addClass(NJClass c){
 		classes.add(c);
 	}
 	
 	public void save(String filename) throws FileNotFoundException, IOException {
-		FileOutputStream f = new FileOutputStream(filename);
-		XMLEncoder xe = new XMLEncoder(f);
+		XMLEncoder xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
 		xe.writeObject(this.classes);
 		xe.close();
-		f.close();
 	}
 	
 	public void load(String filename) throws FileNotFoundException, IOException {
