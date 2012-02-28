@@ -53,7 +53,7 @@ public class VectorOfBoxes {
 	}
 	
 	
-	
+	//can prob delete this now - p
 /*	public ClassBox findNearestBox(int x, int y){
 		ClassBox c;
 		int minDist = 2;
