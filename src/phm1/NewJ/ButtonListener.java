@@ -23,22 +23,28 @@ public class ButtonListener implements ActionListener {
 		String action = a.getActionCommand();
 		
 		if(action.equals("newClass")){ 
-			//this is the shit that happens when you click the new class button - p
 			String className;
-			className = JOptionPane.showInputDialog("enter class name");
-			//pops up a dialog box to get the name for the new class
-						
-				if (className != null && !className.equals("")) { 
-				//if they cancel or don't enter anything then no new class is created
-					NJClass c = new NJClass("Unnamed" + Integer.toString(m.getClassCount() + 1), new ArrayList<NJField>(), new ArrayList<NJMethod>());
-					// what does this line of code do? ^^^^^ - p
-					m.addClass(c);
-					dP.addClass(100, 100, 100, 100, c);
-				}
+			do {
+				//this is the shit that happens when you click the new class button - p
+				
+				className = JOptionPane.showInputDialog("enter class name");
+				//pops up a dialog box to get the name for the new class
+							
+					if (className != null && className.length() > 0) { 
+					//if they cancel or don't enter anything then no new class is created
+						NJClass c = new NJClass("Unnamed" + Integer.toString(m.getClassCount() + 1), new ArrayList<NJField>(), new ArrayList<NJMethod>());
+						// what does this line of code do? ^^^^^ - p
+						m.addClass(c);
+						dP.addClass(100, 100, 100, 100, c);
+					}
+				
+			
 		
 			//TODO put the box somewhere useful - maybe work out where is blank on the screen
 			//TODO work out a sensible size for the box based on input text
-			//TODO stop a class with no name being created
+			
+		}while(className != null && className.length()==0);
+			//keeps asking until they click cancel or enter a name for the class
 		}
 		else if(action.equals("compile")){
 			//this is the shit that happens when you click the compile button
