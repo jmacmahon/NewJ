@@ -9,12 +9,14 @@ public class ClassBox extends JComponent {
 	private int y;
 	private int a;
 	private int b;
+	private NJClass c;
 	
-	public ClassBox(int x, int y, int a, int b) {
+	public ClassBox(int x, int y, int a, int b, NJClass c) {
 		this.x=x; //x position in diagram panel of top left corner of box
 		this.y=y; //y position in diagram panel of top left corner of box
 		this.a=a; //horizontal length of box
 		this.b=b; //vertical height of box
+		this.c = c; // The actual NJClass object that this ClassBox represents
 	}
 	
 	public void draw(Graphics g){

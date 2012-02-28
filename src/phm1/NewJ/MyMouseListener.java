@@ -3,9 +3,9 @@ import java.awt.event.*;
 
 public class MyMouseListener implements MouseListener, MouseMotionListener{
 
-	private DiagramPanel dP = new DiagramPanel();
-	private ButtonPanel bP = new ButtonPanel(dP);
-	private ClassBox box = null;
+	private DiagramPanel dP;
+	private ButtonPanel bP;
+	private ClassBox box;
 	
 	MyMouseListener(DiagramPanel d, ButtonPanel b) {
 		dP = d;

@@ -19,6 +19,10 @@ public class Model {
 		setClasses(new ArrayList<NJClass>());
 	}
 	
+	public int getClassCount(){
+		return classes.size();
+	}
+	
 	public void addClass(NJClass c){
 		classes.add(c);
 	}
