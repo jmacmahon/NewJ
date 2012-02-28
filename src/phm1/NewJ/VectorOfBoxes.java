@@ -22,11 +22,8 @@ public class VectorOfBoxes {
 	}
 	
 	public void drawAll(Graphics g) {
-		ClassBox currentClassBox;
-
-		for(int i=0; i < boxes.size(); i++) {
-			currentClassBox = (ClassBox)(boxes.get(i));
-			currentClassBox.draw(g);
+		for (ClassBox c : boxes) {
+			c.draw(g);
 		}
 	}
 	
@@ -51,29 +48,4 @@ public class VectorOfBoxes {
 		// Just return null if we didn't return earlier - J
 		return null;
 	}
-	
-	
-	//can prob delete this now - p
-/*	public ClassBox findNearestBox(int x, int y){
-		ClassBox c;
-		int minDist = 2;
-		int minDistIndex = -1;
-
-		for(int i=0; i < boxes.size(); i++) {
-			c = (boxes.get(i));
-			if(c.distanceTo(x,y) < minDist) {
-				minDist = c.distanceTo(x,y);
-				minDistIndex = i;
-			}
-
-		}
-		if((minDistIndex >= 0) && (minDist < 30)) {
-			return boxes.get(minDistIndex);
-			
-		}
-		else {
-			return null;
-		}
-	}
-	*/
 }
