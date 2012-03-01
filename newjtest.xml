@@ -1,31 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<java version="1.7.0_01" class="java.beans.XMLDecoder">
- <object class="java.util.ArrayList">
-  <void method="add">
-   <object class="phm1.NewJ.NJClass">
-    <void property="fields">
-     <object class="java.util.ArrayList"/>
-    </void>
-    <void property="methods">
-     <object class="java.util.ArrayList"/>
-    </void>
-    <void property="name">
-     <string>Unnamed1</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="phm1.NewJ.NJClass">
-    <void property="fields">
-     <object class="java.util.ArrayList"/>
-    </void>
-    <void property="methods">
-     <object class="java.util.ArrayList"/>
-    </void>
-    <void property="name">
-     <string>Unnamed2</string>
-    </void>
-   </object>
-  </void>
- </object>
-</java>
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_26" class="java.beans.XMLDecoder"> 
+ <object class="java.util.ArrayList"/> 
+</java> 

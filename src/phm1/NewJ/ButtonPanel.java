@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ButtonPanel extends JPanel{
 
-	JButton newClassButton, compileButton, clearButton, saveButton, loadButton;
+	JButton newClassButton, compileButton, clearButton;
 	
 	public ButtonPanel(DiagramPanel d, Model m) {
 		this.setLayout(new GridLayout(10, 1));
@@ -16,25 +16,22 @@ public class ButtonPanel extends JPanel{
 		newClassButton = new JButton("New Class");
 		compileButton = new JButton("Compile");
 		clearButton = new JButton("Delete");
-		saveButton = new JButton("Save");
-		loadButton = new JButton("Load");
+
 		
 		
-//Can we move the save functionality to the menu? - p
+//moved the save and load functionality to the menu - p
 		
 		//add the buttons 
 		this.add(newClassButton);
 		this.add(compileButton);
 		this.add(clearButton);
-		this.add(saveButton);
-		this.add(loadButton);
+
 		
 		//add the listeners
 		newClassButton.addActionListener(bList);
 		compileButton.addActionListener(bList);
 		clearButton.addActionListener(bList);
-		saveButton.addActionListener(bList);
-		loadButton.addActionListener(bList);
+
 	}
 	
 
