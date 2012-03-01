@@ -13,14 +13,14 @@ public class ButtonPanel extends JPanel{
 		ButtonListener bList = new ButtonListener(this, d, m);
 		
 		//create buttons
-		newClassButton = new JButton("newClass");
-		compileButton = new JButton("compile");
-		clearButton = new JButton("clear");
+		newClassButton = new JButton("New Class");
+		compileButton = new JButton("Compile");
+		clearButton = new JButton("Delete");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
 		
 		
-
+//Can we move the save functionality to the menu? - p
 		
 		//add the buttons 
 		this.add(newClassButton);

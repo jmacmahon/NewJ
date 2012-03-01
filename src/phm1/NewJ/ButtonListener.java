@@ -22,7 +22,7 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent a) {
 		String action = a.getActionCommand();
 		
-		if(action.equals("newClass")){ 
+		if(action.equals("New Class")){ 
 			String className;
 			do {
 				//this is the shit that happens when you click the new class button - p
@@ -46,12 +46,12 @@ public class ButtonListener implements ActionListener {
 		}while(className != null && className.length()==0);
 			//keeps asking until they click cancel or enter a name for the class
 		}
-		else if(action.equals("compile")){
+		else if(action.equals("Compile")){
 			//this is the shit that happens when you click the compile button
 			System.out.println("compile");
 			//compile the code, duh
 		}
-		else if(action.equals("clear")){ //change to delete all
+		else if(action.equals("Delete")){ //change to delete all
 			dP.deleteAll();
 			//TODO clear the screen of all classes - delete files as well? or separate delete button
 		}
