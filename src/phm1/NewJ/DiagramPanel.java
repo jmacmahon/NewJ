@@ -19,7 +19,7 @@ public class DiagramPanel extends JPanel{
 	}
 	public void addClass(int x, int y, int a, int b, NJClass c) {
 		//add a class box to vector of boxes with specified position and dimensions
-		vOfB.addBox(new ClassBox(x, y, a, b, c));
+		vOfB.addBox(new NJClass(x, y, a, b, c));
 		repaint();
 	}
 	
@@ -28,8 +28,8 @@ public class DiagramPanel extends JPanel{
 		repaint();
 	}
 	
-	public ClassBox findNearestClass(int x, int y) {
-		ClassBox c;
+	public NJClass findNearestClass(int x, int y) {
+		NJClass c;
 		//calls a method in vector of boxes to find which box the mouse is inside, then returns that box
 		c = vOfB.clickedInBox(x, y);
 		repaint();

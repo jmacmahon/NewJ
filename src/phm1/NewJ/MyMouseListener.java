@@ -5,7 +5,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 
 	private DiagramPanel dP;
 	private ButtonPanel bP;
-	private ClassBox box;
+	private NJClass box;
 	
 	MyMouseListener(DiagramPanel d, ButtonPanel b) {
 		dP = d;
@@ -15,7 +15,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 	public void mouseClicked(MouseEvent e) {
 		// made selected box look different -P
 		//calls a method to find the box that has been clicked in - P
-		ClassBox box = dP.findNearestClass(e.getX(), e.getY());
+		NJClass box = dP.findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
 			box.setSelected(true);

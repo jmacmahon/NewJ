@@ -7,13 +7,13 @@ import java.util.Vector;
 public class VectorOfBoxes {
 	//store name of class
 	//more text - eg methods and attributes - don't worry about what is in the text box - can improve later if there is time
-	private Vector<ClassBox> boxes;
+	private Vector<NJClass> boxes;
 	
 	VectorOfBoxes() {
-		boxes = new Vector<ClassBox>();
+		boxes = new Vector<NJClass>();
 	}
 	
-	public void addBox(ClassBox c) {
+	public void addBox(NJClass c) {
 		boxes.add(c);
 	}
 	
@@ -22,7 +22,7 @@ public class VectorOfBoxes {
 	}
 	
 	public void drawAll(Graphics g) {
-		for (ClassBox c : boxes) {
+		for (NJClass c : boxes) {
 			c.draw(g);
 		}
 	}
@@ -32,16 +32,16 @@ public class VectorOfBoxes {
 	}
 	
 	public void unselectAll() {
-		for (ClassBox c : boxes) {
+		for (NJClass c : boxes) {
 			c.setSelected(false);
 		}
 	}
 	
-	public ClassBox clickedInBox(int x, int y) {
+	public NJClass clickedInBox(int x, int y) {
 		//finds the box that has been clicked on, if any - p
 		int xPlusA;
 		int yPlusB;
-		for (ClassBox c : boxes){ //loop through boxes - p
+		for (NJClass c : boxes){ //loop through boxes - p
 
 			xPlusA = c.getX()+c.getA();
 			yPlusB = c.getY()+c.getB();
