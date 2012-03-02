@@ -13,12 +13,16 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 	}
 		
 	public void mouseClicked(MouseEvent e) {
-		//TODO make selected box look different -P
+		// made selected box look different -P
 		//calls a method to find the box that has been clicked in - P
 		ClassBox box = dP.findNearestClass(e.getX(), e.getY());
-		//if the mouse is inside a box, it sets this.box to that box so other methods can use it - P
+		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
-			this.box = box;			
+			box.setSelected(true);
+			this.box = box;
+		}
+		else {
+			dP.unselectAll();
 		}
 	}
 

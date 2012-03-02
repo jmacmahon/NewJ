@@ -7,7 +7,6 @@ public class DiagramPanel extends JPanel{
 	
 	public DiagramPanel(){
 		vOfB=new VectorOfBoxes();
-		//the problem here is that creating the vector of boxes inside the diagram panel means some of the other stuff can't see it
 		
 		this.setLayout(new BorderLayout());	
 		this.setBackground(Color.WHITE);
@@ -35,6 +34,10 @@ public class DiagramPanel extends JPanel{
 		c = vOfB.clickedInBox(x, y);
 		repaint();
 		return c;
+	}
+	
+	public void unselectAll() {
+		vOfB.unselectAll();
 	}
 	
 	

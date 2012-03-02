@@ -31,6 +31,12 @@ public class VectorOfBoxes {
 		boxes.clear();
 	}
 	
+	public void unselectAll() {
+		for (ClassBox c : boxes) {
+			c.setSelected(false);
+		}
+	}
+	
 	public ClassBox clickedInBox(int x, int y) {
 		//finds the box that has been clicked on, if any - p
 		int xPlusA;

@@ -10,6 +10,7 @@ public class ClassBox extends JComponent {
 	private int a;
 	private int b;
 	private NJClass c;
+	private boolean selected;
 	
 	public ClassBox(int x, int y, int a, int b, NJClass c) {
 		this.x=x; //x position in diagram panel of top left corner of box
@@ -17,13 +18,27 @@ public class ClassBox extends JComponent {
 		this.a=a; //horizontal length of box
 		this.b=b; //vertical height of box
 		this.c = c; // The actual NJClass object that this ClassBox represents
+		this.selected = false;
 	}
 	
+	public boolean getSelected() {
+		return selected;
+	}
+	
+	public void setSelected(boolean a) {
+		selected = a;
+	}
 	public void draw(Graphics g){
 		//draw the rectangle
-		g.setColor(Color.ORANGE);
+		
+		if (selected){
+			g.setColor(Color.ORANGE);	
+		}
+		else {
+			g.setColor(Color.BLACK);
+		}
 		g.drawRect(this.x, this.y, this.a, this.b);
-		g.fillRect(this.x, this.y, this.a, this.b);
+		
 	}
 	
 	public int distanceTo(int x, int y) {
