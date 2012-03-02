@@ -17,9 +17,9 @@ public class DiagramPanel extends JPanel{
 		super.paintComponent(g);
 		vOfB.drawAll(g);
 	}
-	public void addClass(int x, int y, int a, int b, NJClass c) {
+	public void addClass(NJClass c) {
 		//add a class box to vector of boxes with specified position and dimensions
-		vOfB.addBox(new NJClass(x, y, a, b, c));
+		vOfB.addBox(c);
 		repaint();
 	}
 	

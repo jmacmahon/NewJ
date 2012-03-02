@@ -18,6 +18,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 		NJClass box = dP.findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
+			dP.unselectAll();
 			box.setSelected(true);
 			this.box = box;
 		}
@@ -36,9 +37,17 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 		
 	}
 
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mousePressed(MouseEvent e) {
+		NJClass box = dP.findNearestClass(e.getX(), e.getY());
+		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
+		if(box !=null){
+			dP.unselectAll();
+			box.setSelected(true);
+			this.box = box;
+		}
+		else {
+			dP.unselectAll();
+		}
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -50,8 +59,11 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 		//lets you drag a box around if it is selected - P
 		//you have to click the box before you can drag it around -p
 		if (box !=null){
-		box.update(e.getX(), e.getY());
-		dP.repaint();
+			box.update(e.getX(), e.getY());
+			dP.repaint();
+		}
+		else {
+			dP.unselectAll();
 		}
 	}
 

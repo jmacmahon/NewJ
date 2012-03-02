@@ -29,7 +29,7 @@ public class TestModel {
 			ArrayList<NJMethod> myMethods = new ArrayList<NJMethod>();
 			myMethods.add(myMethod);
 
-			NJClass myTestClass = new NJClass("TestName", myFields, myMethods);
+			NJClass myTestClass = new NJClass("TestName", myFields, myMethods, 100, 100, 100, 100);
 			myModel.addClass(myTestClass);
 
 			System.out.println(myModel.getClasses().get(0).getFields().get(0) == myField);

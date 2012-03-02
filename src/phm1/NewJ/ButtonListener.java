@@ -32,10 +32,10 @@ public class ButtonListener implements ActionListener {
 							
 					if (className != null && className.length() > 0) { 
 					//if they cancel or don't enter anything then no new class is created
-						NJClass c = new NJClass("Unnamed" + Integer.toString(m.getClassCount() + 1), new ArrayList<NJField>(), new ArrayList<NJMethod>());
+						NJClass c = new NJClass(className + Integer.toString(m.getClassCount() + 1), new ArrayList<NJField>(), new ArrayList<NJMethod>(), 100, 100, 100, 100);
 						// what does this line of code do? ^^^^^ - p
 						m.addClass(c);
-						dP.addClass(100, 100, 100, 100, c);
+						dP.addClass(c);
 					}
 				
 			

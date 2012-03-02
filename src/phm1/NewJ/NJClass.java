@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 public class NJClass extends JComponent{
 	
@@ -17,8 +18,9 @@ public class NJClass extends JComponent{
 	private int y;
 	private int a;
 	private int b;
-	private NJClass c;
+	//private NJClass c; obselete  - p
 	private boolean selected;
+	private char[] nameChars;
 	
 	public String getName() {
 		return name;
@@ -39,21 +41,26 @@ public class NJClass extends JComponent{
 		this.methods = methods;
 	}
 	
-	NJClass(String name, ArrayList<NJField> fields, ArrayList<NJMethod> methods){
+	NJClass(String name, ArrayList<NJField> fields, ArrayList<NJMethod> methods, int x, int y, int a, int b){
 		this.setName(name);
 		this.setFields(fields);
 		this.setMethods(methods);
-	}
-	
-	
-	public NJClass(int x, int y, int a, int b, NJClass c) {
+		
 		this.x=x; //x position in diagram panel of top left corner of box
 		this.y=y; //y position in diagram panel of top left corner of box
 		this.a=a; //horizontal length of box
 		this.b=b; //vertical height of box
-		this.c = c; // The actual NJClass object that this ClassBox represents
+		//this.c = c; // The actual NJClass object that this ClassBox represents - obslete - p
+		
 		this.selected = false;
+		nameChars = new char[name.length()];
+		for (int i=0; i< name.length(); i++) {
+			nameChars[i]= name.charAt(i);
+		}
 	}
+	
+	
+	public NJClass() {}
 	
 	public boolean getSelected() {
 		return selected;
@@ -72,6 +79,12 @@ public class NJClass extends JComponent{
 			g.setColor(Color.BLACK);
 		}
 		g.drawRect(this.x, this.y, this.a, this.b);
+		g.setColor(Color.WHITE);
+		g.fillRect(this.x+1, this.y+1, this.a-1, this.b-1);
+		g.setColor(Color.BLACK);
+		g.getFontMetrics(); //use this to find font height etc
+		g.drawChars(nameChars, 0, name.length(), this.x, this.y);
+		
 		
 	}
 	
@@ -86,16 +99,7 @@ public class NJClass extends JComponent{
 		this.y = y;
 		repaint();
 	}
-	//TODO fix this so it doesn't freak out
-	public int getMX(int x) {
-		int i = x - this.x;
-		return i;
-	}
-	//TODO same as getMX
-	public int getMY(int y) {
-		int i = y - this.y;
-		return i;
-	}
+//TODO write something so the box doesn't jump to the mouse when dragged
 	
 	
 	//the below should be fairly obvious
