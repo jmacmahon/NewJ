@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ButtonPanel extends JPanel{
 
-	JButton newClassButton, compileButton, clearButton;
+	JButton newClassButton, compileButton, clearButton, deleteButton;
 	
 	public ButtonPanel(DiagramPanel d, Model m) {
 		this.setLayout(new GridLayout(10, 1));
@@ -15,7 +15,9 @@ public class ButtonPanel extends JPanel{
 		//create buttons
 		newClassButton = new JButton("New Class");
 		compileButton = new JButton("Compile");
-		clearButton = new JButton("Delete");
+		deleteButton = new JButton("Delete Selected");
+		clearButton = new JButton("Delete All");
+		
 
 		
 		
@@ -24,12 +26,14 @@ public class ButtonPanel extends JPanel{
 		//add the buttons 
 		this.add(newClassButton);
 		this.add(compileButton);
+		this.add(deleteButton);
 		this.add(clearButton);
 
 		
 		//add the listeners
 		newClassButton.addActionListener(bList);
 		compileButton.addActionListener(bList);
+		deleteButton.addActionListener(bList);
 		clearButton.addActionListener(bList);
 
 	}

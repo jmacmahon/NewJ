@@ -51,9 +51,14 @@ public class ButtonListener implements ActionListener {
 			System.out.println("compile");
 			//compile the code, duh
 		}
-		else if(action.equals("Delete")){ //change to delete all
+		else if(action.equals("Delete Selected")){
+			dP.deleteSelected();
+			//deletes selected box
+		}
+		
+		else if (action.equals("Delete All")) {
 			dP.deleteAll();
-			//TODO clear the screen of all classes - delete files as well? or separate delete button
+			//deletes all boxes
 		}
 //moved save and load to the menu - p
 		

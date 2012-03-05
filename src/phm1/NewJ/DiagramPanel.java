@@ -28,6 +28,11 @@ public class DiagramPanel extends JPanel{
 		repaint();
 	}
 	
+	public void deleteSelected() {
+		vOfB.deleteSelected();
+		repaint();
+	}
+	
 	public NJClass findNearestClass(int x, int y) {
 		NJClass c;
 		//calls a method in vector of boxes to find which box the mouse is inside, then returns that box

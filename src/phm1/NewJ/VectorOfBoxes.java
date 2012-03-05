@@ -31,6 +31,13 @@ public class VectorOfBoxes {
 		boxes.clear();
 	}
 	
+	public void deleteSelected() {
+		for (int i =0; i< boxes.size(); i++) {
+			if(boxes.elementAt(i).getSelected()) {
+				boxes.remove(i);
+			}
+		}	
+	}
 	public void unselectAll() {
 		for (NJClass c : boxes) {
 			c.setSelected(false);
