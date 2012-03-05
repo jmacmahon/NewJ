@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
 	MyMenuListener mmL;
 	
 	MainFrame() {
-		//innitialise everything - p
+		//initalise everything - p
 		m = new Model();
 		dPanel = new DiagramPanel();
 		bPanel = new ButtonPanel(dPanel, m);
@@ -31,10 +31,11 @@ public class MainFrame extends JFrame {
 		this.add(bPanel, BorderLayout.WEST);
 		this.add(menus, BorderLayout.NORTH);
 		
-		//mouse listner stuff - p
+		//mouse listener stuff - p
 		mL= new MyMouseListener(dPanel, bPanel);
 		dPanel.addMouseListener(mL);
 		dPanel.addMouseMotionListener(mL);
+		//dPopup.addPopupMenuListener(mL);
 		
 		//menu shit - p
 		mmL = new MyMenuListener(menus, m);

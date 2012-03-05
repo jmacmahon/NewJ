@@ -8,13 +8,19 @@ public class VectorOfBoxes {
 	//store name of class
 	//more text - eg methods and attributes - don't worry about what is in the text box - can improve later if there is time
 	private Vector<NJClass> boxes;
+	private Vector<Connector> connections;
 	
 	VectorOfBoxes() {
 		boxes = new Vector<NJClass>();
+		connections = new Vector<Connector>();
 	}
 	
 	public void addBox(NJClass c) {
 		boxes.add(c);
+	}
+	
+	public void addConnection(Connector c) {
+		connections.add(c);
 	}
 	
 	public int getNoBoxes() {
@@ -23,6 +29,9 @@ public class VectorOfBoxes {
 	
 	public void drawAll(Graphics g) {
 		for (NJClass c : boxes) {
+			c.draw(g);
+		}
+		for (Connector c : connections) {
 			c.draw(g);
 		}
 	}

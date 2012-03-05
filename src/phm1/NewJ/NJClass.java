@@ -82,9 +82,9 @@ public class NJClass extends JComponent{
 		g.setColor(Color.WHITE);
 		g.fillRect(this.x+1, this.y+1, this.a-1, this.b-1);
 		g.setColor(Color.BLACK);
-		g.getFontMetrics(); //use this to find font height etc
-		g.drawChars(nameChars, 0, name.length(), this.x, this.y);
-		
+		g.drawChars(nameChars, 0, name.length(), this.x+5, this.y+11);
+		g.drawLine(this.x, this.y+12, this.x+this.a, this.y+12);
+		g.drawLine(this.x, this.y+50, this.x+this.a, this.y+50);
 		
 	}
 	

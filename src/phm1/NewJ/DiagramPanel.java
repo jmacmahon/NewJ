@@ -1,5 +1,6 @@
 package phm1.NewJ;
 import javax.swing.*;
+
 import java.awt.*;
 
 public class DiagramPanel extends JPanel{
@@ -7,7 +8,6 @@ public class DiagramPanel extends JPanel{
 	
 	public DiagramPanel(){
 		vOfB=new VectorOfBoxes();
-		
 		this.setLayout(new BorderLayout());	
 		this.setBackground(Color.WHITE);
 	
@@ -21,6 +21,10 @@ public class DiagramPanel extends JPanel{
 		//add a class box to vector of boxes with specified position and dimensions
 		vOfB.addBox(c);
 		repaint();
+	}
+	
+	public void addConnection(NJClass a, NJClass b, ConnectionType c) {
+		vOfB.addConnection(new Connector(a, b, c));
 	}
 	
 	public void deleteAll() {

@@ -1,15 +1,24 @@
 package phm1.NewJ;
 import java.awt.event.*;
 
-public class MyMouseListener implements MouseListener, MouseMotionListener{
+import javax.swing.SwingUtilities;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+
+public class MyMouseListener implements MouseListener, MouseMotionListener, PopupMenuListener {
 
 	private DiagramPanel dP;
 	private ButtonPanel bP;
 	private NJClass box;
+	private NJClass box2;
+	private ConnectionType connection;
+	//private DiagramPopup dPup;
+	
 	
 	MyMouseListener(DiagramPanel d, ButtonPanel b) {
 		dP = d;
 		bP = b;
+		//dPup = p;
 	}
 		
 	public void mouseClicked(MouseEvent e) {
@@ -17,13 +26,25 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 		//calls a method to find the box that has been clicked in - P
 		NJClass box = dP.findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
-		if(box !=null){
+		if(box !=null && SwingUtilities.isLeftMouseButton(e) && box2==null){
 			dP.unselectAll();
 			box.setSelected(true);
 			this.box = box;
 		}
+		else if (box !=null && SwingUtilities.isRightMouseButton(e)) {
+			dP.unselectAll();
+			box.setSelected(true);
+			this.box2=box;
+			//dPup.popBoxMenu();	
+		}
+		
+		else if (box !=null && SwingUtilities.isLeftMouseButton(e) && box2 !=null) {
+			connection = ConnectionType.extendsConnection;
+			dP.addConnection(box, box2, connection);
+		}
 		else {
 			dP.unselectAll();
+			//dPup.popBackgroundMenu();
 		}
 	}
 
@@ -70,6 +91,26 @@ public class MyMouseListener implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent arg0) {
 		//don't need anything here yet
 	}
+
+	@Override
+	public void popupMenuCanceled(PopupMenuEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void popupMenuWillBecomeInvisible(PopupMenuEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void popupMenuWillBecomeVisible(PopupMenuEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 	
 

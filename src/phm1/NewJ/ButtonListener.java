@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class ButtonListener implements ActionListener {
@@ -46,11 +47,29 @@ public class ButtonListener implements ActionListener {
 		}while(className != null && className.length()==0);
 			//keeps asking until they click cancel or enter a name for the class
 		}
-		else if(action.equals("Compile")){
-			//this is the shit that happens when you click the compile button
-			System.out.println("compile");
-			//compile the code, duh
+		
+		
+		else if(action.equals("New Connection")){
+			ConnectionComboBox createConnection = new ConnectionComboBox();
+			createConnection.addActionListener(this);
+			
+			/*
+			 *so this button will let you select the connection type
+			 *and the two classes you are connection
+			 *so i think the best way to do this is 3 comboboxes in a row in a JDialogBox
+			 *ie class one, connection, class two
+			 *so i need to work out how to make custom combo boxes
+			 *so i can show all the classes the user created
+			 *or i could just stick all the class names into an array of strings
+			 *that seems like a less elegant solution though
+			 *might be best to start with that 
+			 * 
+			 */
+			
+			
 		}
+		
+		
 		else if(action.equals("Delete Selected")){
 			dP.deleteSelected();
 			//deletes selected box
