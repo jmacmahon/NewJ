@@ -53,18 +53,9 @@ public class ButtonListener implements ActionListener {
 			ConnectionComboBox createConnection = new ConnectionComboBox();
 			createConnection.addActionListener(this);
 			
-			/*
-			 *so this button will let you select the connection type
-			 *and the two classes you are connection
-			 *so i think the best way to do this is 3 comboboxes in a row in a JDialogBox
-			 *ie class one, connection, class two
-			 *so i need to work out how to make custom combo boxes
-			 *so i can show all the classes the user created
-			 *or i could just stick all the class names into an array of strings
-			 *that seems like a less elegant solution though
-			 *might be best to start with that 
-			 * 
-			 */
+/*
+ * the idea here is to pop up a combo box with 3 dropdown lists
+ */
 			
 			
 		}
