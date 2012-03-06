@@ -25,25 +25,21 @@ public class ButtonListener implements ActionListener {
 
 		if(action.equals("New Class")){ 
 			String className;
-			do {
-				//this is the shit that happens when you click the new class button - p
+			//this is the shit that happens when you click the new class button - p
 
-				className = JOptionPane.showInputDialog("enter class name");
-				//pops up a dialog box to get the name for the new class
+			className = JOptionPane.showInputDialog("enter class name");
+			//pops up a dialog box to get the name for the new class
 
-				if (className == null || className.length() == 0) { 
-					className = "Untitled" + Integer.toString(m.getClassCount() + 1);
-				}
-				NJClass c = new NJClass(className, new ArrayList<NJField>(), new ArrayList<NJMethod>(), 100, 100, 100, 100);
-				// what does this line of code do? ^^^^^ - p
-				m.addClass(c);
-				dP.addClass(c);
-				
-				//TODO put the box somewhere useful - maybe work out where is blank on the screen
-				//TODO work out a sensible size for the box based on input text
+			if (className == null || className.length() == 0) { 
+				className = "Untitled" + Integer.toString(m.getClassCount() + 1);
+			}
+			NJClass c = new NJClass(className, new ArrayList<NJField>(), new ArrayList<NJMethod>(), 100, 100, 100, 100);
+			// what does this line of code do? ^^^^^ - p
+			m.addClass(c);
+			dP.addClass(c);
 
-			}while(className != null && className.length()==0);
-			//keeps asking until they click cancel or enter a name for the class
+			//TODO put the box somewhere useful - maybe work out where is blank on the screen
+			//TODO work out a sensible size for the box based on input text
 		}
 
 
