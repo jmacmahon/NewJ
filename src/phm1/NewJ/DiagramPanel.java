@@ -35,6 +35,7 @@ public class DiagramPanel extends JPanel{
 	public void deleteSelected() {
 		vOfB.deleteSelected();
 		repaint();
+		//TODO also delete relevant connections
 	}
 	
 	public NJClass findNearestClass(int x, int y) {

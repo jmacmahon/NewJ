@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,7 @@ public class MyMenuListener implements ActionListener{
 	public MyMenuListener(JMenuBar b, Model m){
 		jMB = b;
 		this.m = m;
+		
 	}
 	
 	public void actionPerformed(ActionEvent a) {
@@ -64,6 +66,23 @@ public class MyMenuListener implements ActionListener{
 				e.printStackTrace();
 			}
 		
+		}
+		
+		else if(action.equals("Exit")) {
+			System.exit(1); //is this right?
+		}
+		
+		else if(action.equals("\"New Class\" Help")){
+			JOptionPane.showMessageDialog(null, "Click the \"New Class\" button to create a new class. You will be able to enter a custom name for the class", 
+					"Help", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if(action.equals("\"Delete Selected\" Help")) {
+			JOptionPane.showMessageDialog(null, "Click the \"Delete Selected\" button to delete the currently selected (orange outlined) class",
+					"Help", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if(action.equals("\"Delete All\" Help")) {
+			JOptionPane.showMessageDialog(null,  "Click the \"Delete All\" button to clear all classes and connections from the screen",
+					"Help", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	}
