@@ -26,7 +26,7 @@ public class ButtonListener implements ActionListener {
 				className = "Untitled" + Integer.toString(g.getModel().getClassCount() + 1);
 			}
 			NJClass c = new NJClass(className, 100, 100, 100, 100);
-			dP.addClass(c);
+			g.addClass(c);
 
 			//TODO put the box somewhere useful - maybe work out where is blank on the screen
 			//TODO work out a sensible size for the box based on input text

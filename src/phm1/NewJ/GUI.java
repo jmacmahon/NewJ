@@ -41,14 +41,15 @@ public class GUI {
 		this.model = m;
 	}
 	
-	public void addBox(NJClass c) {
+	public void addClass(NJClass c) {
 		model.addClass(c);
+		dPanel.repaint();
 	}
 	
 	public void initialise(){
 		//initalise everything - p
 		model = new Model();
-		dPanel = new DiagramPanel(model);
+		dPanel = new DiagramPanel(this);
 		bPanel = new ButtonPanel(this);
 		menus = new Menus(dPanel, model);
 		mouseListener= new MyMouseListener(dPanel, bPanel);
