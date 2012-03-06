@@ -11,11 +11,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
 public class MyMenuListener implements ActionListener{
-	JMenuBar jMB;
-	Model m;
+	private JMenuBar jMB;
+	private DiagramPanel dP;
+	private Model m;
 	
-	public MyMenuListener(JMenuBar b, Model m){
+	public MyMenuListener(JMenuBar b, DiagramPanel dP, Model m){
 		jMB = b;
+		this.dP = dP;
 		this.m = m;
 		
 	}
@@ -23,16 +25,15 @@ public class MyMenuListener implements ActionListener{
 	public void actionPerformed(ActionEvent a) {
 		String action = a.getActionCommand();
 		String fileName;
-		String loadFile = "loadfile.xml";
 		JFileChooser chooser = new JFileChooser();
 		
 		
 		if (action.equals("Save")) {
 			fileName = JOptionPane.showInputDialog("Enter name to save file as:");
 			
-			if (fileName != null && !fileName.contains(".") && !fileName.contains("/") && !fileName.isEmpty()) {
+			if (fileName != null && !fileName.contains("/") && !fileName.isEmpty()) {
 				try {
-					m.save("fileName"+ ".xml");
+					m.save(fileName+ ".xml");
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -45,6 +46,7 @@ public class MyMenuListener implements ActionListener{
 	
 		
 		else if(action.equals("Load")){
+			fileName = JOptionPane.showInputDialog("Enter name of file to load from:");
 			
 			// Note this won't actually work properly because of the ArrayList<NJClass> and the VectorOfBoxes clusterfuck of code duplication
 			// TODO Sort that shit out man
@@ -57,7 +59,8 @@ public class MyMenuListener implements ActionListener{
 			
 			//TODO this file chooser will work eventually promise
 			try {
-				m.load(loadFile);
+				m.load(fileName);
+				dP.repaint();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -18,18 +18,13 @@ public class TestModel {
 			NJField myField = new NJField("test", "int", NJAccessModifier.PRIVATE);
 
 			NJArgument myArgument = new NJArgument("herpaderp", "String");
-			ArrayList<NJArgument> myArguments = new ArrayList<NJArgument>();
-			myArguments.add(myArgument);
 
-			NJMethod myMethod = new NJMethod("aMethod", "void", NJAccessModifier.PUBLIC, myArguments);
+			NJMethod myMethod = new NJMethod("aMethod", "void", NJAccessModifier.PUBLIC);
+			myMethod.addArgument(myArgument);
 
-			ArrayList<NJField> myFields = new ArrayList<NJField>();
-			myFields.add(myField);
-
-			ArrayList<NJMethod> myMethods = new ArrayList<NJMethod>();
-			myMethods.add(myMethod);
-
-			NJClass myTestClass = new NJClass("TestName", myFields, myMethods, 100, 100, 100, 100);
+			NJClass myTestClass = new NJClass("TestName", 100, 100, 100, 100);
+			myTestClass.addField(myField);
+			myTestClass.addMethod(myMethod);
 			myModel.addClass(myTestClass);
 
 			System.out.println(myModel.getClasses().get(0).getFields().get(0) == myField);

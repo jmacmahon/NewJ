@@ -3,6 +3,8 @@ package phm1.NewJ;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Vector;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
@@ -14,6 +16,7 @@ public class NJClass extends JComponent{
 	private String name;
 	private ArrayList<NJField> fields;
 	private ArrayList<NJMethod> methods;
+	private ArrayList<NJConnection> connections;
 
 	//graphics variables
 	private int x;
@@ -40,6 +43,12 @@ public class NJClass extends JComponent{
 	}
 	public void setMethods(ArrayList<NJMethod> methods) {
 		this.methods = methods;
+	}
+	public ArrayList<NJConnection> getConnections() {
+		return connections;
+	}
+	public void setConnections(ArrayList<NJConnection> connections) {
+		this.connections = connections;
 	}
 	public int getX() {
 		return x;
@@ -72,15 +81,17 @@ public class NJClass extends JComponent{
 		this.nameChars = nameChars;
 	}
 	
-	NJClass(String name, ArrayList<NJField> fields, ArrayList<NJMethod> methods, int x, int y, int a, int b){
+	NJClass(String name, int x, int y, int a, int b){
 		this.setName(name);
-		this.setFields(fields);
-		this.setMethods(methods);
+		this.setFields(new ArrayList<NJField>());
+		this.setMethods(new ArrayList<NJMethod>());
 
 		this.x=x; //x position in diagram panel of top left corner of box
 		this.y=y; //y position in diagram panel of top left corner of box
 		this.a=a; //horizontal length of box
 		this.b=b; //vertical height of box
+		
+		this.connections = new ArrayList<NJConnection>();
 
 		this.selected = false;
 		nameChars = new char[name.length()];
@@ -89,9 +100,20 @@ public class NJClass extends JComponent{
 		}
 	}
 
-
 	public NJClass() {}
 
+	public void addField(NJField f){
+		this.fields.add(f);
+	}
+	
+	public void addMethod(NJMethod m){
+		this.methods.add(m);
+	}
+	
+	public void addConnection(NJConnection c){
+		this.connections.add(c);
+	}
+	
 	public boolean getSelected() {
 		return selected;
 	}
@@ -116,6 +138,12 @@ public class NJClass extends JComponent{
 		g.drawLine(this.x, this.y+12, this.x+this.a, this.y+12);
 		g.drawLine(this.x, this.y+50, this.x+this.a, this.y+50);
 
+	}
+	
+	public void drawConnections(Graphics g){
+		for (NJConnection c : connections){
+			c.draw(g,  this);
+		}
 	}
 
 	public int distanceTo(int x, int y) {

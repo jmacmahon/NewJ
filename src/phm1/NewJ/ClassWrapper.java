@@ -4,51 +4,46 @@ import java.awt.*;
 
 import java.util.Vector;
 
-public class VectorOfBoxes {
-	//store name of class
-	//more text - eg methods and attributes - don't worry about what is in the text box - can improve later if there is time
-	private Vector<NJClass> boxes;
-	private Vector<Connector> connections;
+public class ClassWrapper {
+	// This really is a bit useless now but getting rid of it would break things, so I'll take the hacky approach now and clean up later :P - J
+	Model m;
 	
-	VectorOfBoxes() {
-		boxes = new Vector<NJClass>();
-		connections = new Vector<Connector>();
+	ClassWrapper(Model m) {
+		this.m = m;
 	}
 	
 	public void addBox(NJClass c) {
-		boxes.add(c);
+		m.addClass(c);
 	}
 	
-	public void addConnection(Connector c) {
-		connections.add(c);
-	}
-	
-	public int getNoBoxes() {
+	/*public int getNoBoxes() {
 		return boxes.size();
-	}
+	}*/
 	
 	public void drawAll(Graphics g) {
-		for (NJClass c : boxes) {
+		for (NJClass c : m.getClasses()) {
 			c.draw(g);
+			c.drawConnections(g);
 		}
-		for (Connector c : connections) {
+		/*for (NJConnection c : connections) {
 			c.draw(g);
-		}
+		}*/
 	}
 	
 	public void deleteAll() {
-		boxes.clear();
+		m.clear();
 	}
 	
 	public void deleteSelected() {
-		for (int i =0; i< boxes.size(); i++) {
-			if(boxes.elementAt(i).getSelected()) {
-				boxes.remove(i);
+		for(NJClass c : m.getClasses()){
+			if(c.getSelected()){
+				m.removeClass(c);
+				return;
 			}
-		}	
+		}
 	}
 	public void unselectAll() {
-		for (NJClass c : boxes) {
+		for (NJClass c : m.getClasses()) {
 			c.setSelected(false);
 		}
 	}
@@ -57,7 +52,7 @@ public class VectorOfBoxes {
 		//finds the box that has been clicked on, if any - p
 		int xPlusA;
 		int yPlusB;
-		for (NJClass c : boxes){ //loop through boxes - p
+		for (NJClass c : m.getClasses()){ //loop through boxes - p
 
 			xPlusA = c.getX()+c.getA();
 			yPlusB = c.getY()+c.getB();

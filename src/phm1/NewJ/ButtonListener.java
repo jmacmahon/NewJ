@@ -33,9 +33,8 @@ public class ButtonListener implements ActionListener {
 			if (className == null || className.length() == 0) { 
 				className = "Untitled" + Integer.toString(m.getClassCount() + 1);
 			}
-			NJClass c = new NJClass(className, new ArrayList<NJField>(), new ArrayList<NJMethod>(), 100, 100, 100, 100);
+			NJClass c = new NJClass(className, 100, 100, 100, 100);
 			// what does this line of code do? ^^^^^ - p
-			m.addClass(c);
 			dP.addClass(c);
 
 			//TODO put the box somewhere useful - maybe work out where is blank on the screen

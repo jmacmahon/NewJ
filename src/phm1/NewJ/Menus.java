@@ -13,9 +13,9 @@ public class Menus extends JMenuBar{
 	MyMenuListener mML;
 	Model model;
 	
-		public Menus(Model m){
+		public Menus(DiagramPanel dP, Model m){
 			model = m;
-			mML = new MyMenuListener(this, model);
+			mML = new MyMenuListener(this, dP, model);
 			
 			mainMenu = new JMenu("File");
 			editMenu = new JMenu("Edit");

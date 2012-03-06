@@ -4,13 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DiagramPanel extends JPanel{
-	private VectorOfBoxes vOfB;
+	private ClassWrapper vOfB;
 	
-	public DiagramPanel(){
-		vOfB=new VectorOfBoxes();
+	public DiagramPanel(Model m){
+		vOfB=new ClassWrapper(m);
 		this.setLayout(new BorderLayout());	
 		this.setBackground(Color.WHITE);
-	
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -24,7 +23,7 @@ public class DiagramPanel extends JPanel{
 	}
 	
 	public void addConnection(NJClass a, NJClass b, ConnectionType c) {
-		vOfB.addConnection(new Connector(a, b, c));
+		a.addConnection(new NJConnection(b, c));
 	}
 	
 	public void deleteAll() {

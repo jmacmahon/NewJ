@@ -27,6 +27,14 @@ public class Model {
 		classes.add(c);
 	}
 	
+	public void removeClass(NJClass c){
+		classes.remove(c);
+	}
+	
+	public void clear(){
+		classes.clear();
+	}
+	
 	public void save(String filename) throws FileNotFoundException, IOException {
 		XMLEncoder xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
 		xe.writeObject(this.classes);

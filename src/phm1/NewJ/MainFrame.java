@@ -14,9 +14,9 @@ public class MainFrame extends JFrame {
 	MainFrame() {
 		//initalise everything - p
 		m = new Model();
-		dPanel = new DiagramPanel();
+		dPanel = new DiagramPanel(m);
 		bPanel = new ButtonPanel(dPanel, m);
-		menus = new Menus(m);
+		menus = new Menus(dPanel, m);
 
 		
 		
@@ -38,7 +38,8 @@ public class MainFrame extends JFrame {
 		//dPopup.addPopupMenuListener(mL);
 		
 		//menu shit - p
-		mmL = new MyMenuListener(menus, m);
+		// I don't quite understand why you're creating this twice and never using this one, could you put a reason in the comments so I understand what I'm debugging? - J
+		mmL = new MyMenuListener(menus, dPanel, m);
 		
 		
 		//TODO work out where to add the listener for the menu - doesn't seem to be on the menu bar, maybe on each menu- p
