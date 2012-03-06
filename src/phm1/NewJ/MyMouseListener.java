@@ -69,6 +69,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			this.box = box;
 			this.offsetX = e.getX() - box.getX();
 			this.offsetY = e.getY() - box.getY();
+			// Works out where the cursor is within the box so we can move the box relative to the mouse - J
 		}
 		else {
 			dP.unselectAll();
@@ -86,6 +87,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		if (box !=null){
 			int newX = e.getX() - this.offsetX;
 			int newY = e.getY() - this.offsetY;
+			// Moves relative to the cursor - J
 			box.update(newX, newY);
 			dP.repaint();
 		}

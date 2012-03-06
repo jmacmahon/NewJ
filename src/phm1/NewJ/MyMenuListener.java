@@ -46,10 +46,8 @@ public class MyMenuListener implements ActionListener{
 	
 		
 		else if(action.equals("Load")){
+			// This actually works now - J
 			fileName = JOptionPane.showInputDialog("Enter name of file to load from:");
-			
-			// Note this won't actually work properly because of the ArrayList<NJClass> and the VectorOfBoxes clusterfuck of code duplication
-			// TODO Sort that shit out man
 			
 			//int returnVal = chooser.showOpenDialog();
 		    //if(returnVal == JFileChooser.APPROVE_OPTION) {
@@ -72,7 +70,7 @@ public class MyMenuListener implements ActionListener{
 		}
 		
 		else if(action.equals("Exit")) {
-			System.exit(1); //is this right?
+			System.exit(0); // 0 means success
 		}
 		
 		else if(action.equals("\"New Class\" Help")){
