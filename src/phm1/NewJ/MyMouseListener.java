@@ -13,6 +13,8 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	private NJClass box2;
 	private ConnectionType connection;
 	//private DiagramPopup dPup;
+	private int offsetX;
+	private int offsetY;
 	
 	
 	MyMouseListener(DiagramPanel d, ButtonPanel b) {
@@ -65,6 +67,8 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			dP.unselectAll();
 			box.setSelected(true);
 			this.box = box;
+			this.offsetX = e.getX() - box.getX();
+			this.offsetY = e.getY() - box.getY();
 		}
 		else {
 			dP.unselectAll();
@@ -80,7 +84,9 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		//lets you drag a box around if it is selected - P
 		//you have to click the box before you can drag it around -p
 		if (box !=null){
-			box.update(e.getX(), e.getY());
+			int newX = e.getX() - this.offsetX;
+			int newY = e.getY() - this.offsetY;
+			box.update(newX, newY);
 			dP.repaint();
 		}
 		else {

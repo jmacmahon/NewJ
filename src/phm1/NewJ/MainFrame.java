@@ -21,7 +21,7 @@ public class MainFrame extends JFrame {
 		
 		
 		//set the frame size an shit - p
-		this.setSize(400,400);
+		this.setSize(600,400);
 		this.setLocation(200,200);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("The Worlds Greatest IDE");
