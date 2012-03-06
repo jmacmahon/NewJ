@@ -6,20 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
 public class MyMenuListener implements ActionListener{
-	private JMenuBar jMB;
-	private DiagramPanel dP;
-	private Model m;
+	private GUI gui;
 	
-	public MyMenuListener(JMenuBar b, DiagramPanel dP, Model m){
-		jMB = b;
-		this.dP = dP;
-		this.m = m;
-		
+	public MyMenuListener(GUI g){
+		this.gui = g;
 	}
 	
 	public void actionPerformed(ActionEvent a) {
@@ -33,7 +26,7 @@ public class MyMenuListener implements ActionListener{
 			
 			if (fileName != null && !fileName.contains("/") && !fileName.isEmpty()) {
 				try {
-					m.save(fileName+ ".xml");
+					gui.getModel().save(fileName+ ".xml");
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -57,8 +50,8 @@ public class MyMenuListener implements ActionListener{
 			
 			//TODO this file chooser will work eventually promise
 			try {
-				m.load(fileName);
-				dP.repaint();
+				gui.getModel().load(fileName);
+				gui.repaint();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

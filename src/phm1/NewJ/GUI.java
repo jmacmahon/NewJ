@@ -43,7 +43,7 @@ public class GUI {
 	
 	public void addClass(NJClass c) {
 		model.addClass(c);
-		dPanel.repaint();
+		repaint();
 	}
 	
 	public void initialise(){
@@ -51,9 +51,9 @@ public class GUI {
 		model = new Model();
 		dPanel = new DiagramPanel(this);
 		bPanel = new ButtonPanel(this);
-		menus = new Menus(dPanel, model);
-		mouseListener= new MyMouseListener(dPanel, bPanel);
-		MainFrame f = new MainFrame(model, dPanel, bPanel, menus, mouseListener);
+		menus = new Menus(this);
+		mouseListener = new MyMouseListener(this);
+		MainFrame f = new MainFrame(this);
 		f.setVisible(true);
 	}
 	
@@ -66,7 +66,7 @@ public class GUI {
 	
 	public void deleteAll() {
 		model.clear();
-		dPanel.repaint();
+		repaint();
 	}
 	
 	public void deleteSelected() {
@@ -76,8 +76,13 @@ public class GUI {
 				return;
 			}
 		}
+		repaint();
+	}
+	
+	public void repaint(){
 		dPanel.repaint();
 	}
+	
 	public void unselectAll() {
 		for (NJClass c : model.getClasses()) {
 			c.setSelected(false);
