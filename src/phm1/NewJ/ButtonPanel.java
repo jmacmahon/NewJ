@@ -7,10 +7,10 @@ public class ButtonPanel extends JPanel{
 
 	JButton newClassButton, connectionButton, clearButton, deleteButton;
 	
-	public ButtonPanel(DiagramPanel d, Model m) {
+	public ButtonPanel(GUI g) {
 		this.setLayout(new GridLayout(10, 1));
 		this.setSize(100, 200);
-		ButtonListener bList = new ButtonListener(this, d, m);
+		ButtonListener bList = new ButtonListener(g);
 		
 		//create buttons
 		newClassButton = new JButton("New Class");

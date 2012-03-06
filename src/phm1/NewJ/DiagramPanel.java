@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DiagramPanel extends JPanel{
-	private ClassWrapper vOfB;
+	private GUI vOfB;
 	
 	public DiagramPanel(Model m){
-		vOfB=new ClassWrapper(m);
+		vOfB=new GUI(m);
 		this.setLayout(new BorderLayout());	
 		this.setBackground(Color.WHITE);
 	}
@@ -24,16 +24,6 @@ public class DiagramPanel extends JPanel{
 	
 	public void addConnection(NJClass a, NJClass b, ConnectionType c) {
 		a.addConnection(new NJConnection(b, c));
-	}
-	
-	public void deleteAll() {
-		vOfB.deleteAll();
-		repaint();
-	}
-	
-	public void deleteSelected() {
-		vOfB.deleteSelected();
-		repaint();
 	}
 	
 	public NJClass findNearestClass(int x, int y) {
