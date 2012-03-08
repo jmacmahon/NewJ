@@ -7,18 +7,16 @@ public class DiagramPanel extends JPanel{
 	private GUI gui;
 	private NJClass selected;
 	private boolean inheriting;
-	private NJInheritance tempInheritance;
 	
 	public boolean getInheriting(){
 		return inheriting;
 	}
 	
 	public void setInheriting(boolean inheriting){
-		this.inheriting = inheriting;
-		if(inheriting)
-			standByForInheritance();
-		/*else
-			dropInheritance();*/
+		this.inheriting = (selected != null) && inheriting;
+		if(this.inheriting){
+			selected.setInherits(new NJInheritance());
+		}
 	}
 	
 	public NJClass getSelected() {
@@ -26,11 +24,14 @@ public class DiagramPanel extends JPanel{
 	}
 
 	public void setSelected(NJClass selected) {
+		if(inheriting){
+			if(selected == null){
+				this.selected.setInherits(null);
+			} else if(selected != null && this.selected.getInherits() != null){
+				this.selected.getInherits().setTo(selected);
+			}
+		}
 		this.selected = selected;
-	}
-	
-	public NJInheritance getTempInheritance() {
-		return tempInheritance;
 	}
 
 	public DiagramPanel(GUI g){
@@ -40,21 +41,9 @@ public class DiagramPanel extends JPanel{
 		this.setBackground(Color.WHITE);
 	}
 	
-	public void standByForInheritance(){
-		if(selected != null){
-			tempInheritance = new NJInheritance();
-		}
-	}
-	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		gui.drawAll(g);
-		/*if(tempInheritance != null)
-			tempInheritance.draw(g, );*/
-	}
-	
-	private void addInheritance(NJClass a, NJClass b) {
-		a.setInherits(new NJInheritance(b));
 	}
 	
 	public NJClass findNearestClass(int x, int y) {
@@ -66,7 +55,7 @@ public class DiagramPanel extends JPanel{
 	}
 	
 	public void unselectAll() {
-		gui.unselectAll();
+		setSelected(null);
 	}
 	
 	

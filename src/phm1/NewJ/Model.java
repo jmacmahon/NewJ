@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Model {
 	private ArrayList<NJClass> classes;
+	private GUI gui;
 
 	public ArrayList<NJClass> getClasses() {
 		return classes;

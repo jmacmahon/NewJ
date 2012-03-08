@@ -28,6 +28,10 @@ public class ButtonListener implements ActionListener {
 
 		else if(action.equals("Add Inheritance")){
 			g.getdPanel().setInheriting(g.getbPanel().getInheritanceButton().getModel().isSelected());
+			if(g.getdPanel().getInheriting() != g.getbPanel().getInheritanceButton().getModel().isSelected()){
+				JOptionPane.showMessageDialog(g.getMainFrame(), "You must select a class first!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			g.getbPanel().getInheritanceButton().getModel().setSelected(g.getdPanel().getInheriting());
 		}
 
 
@@ -50,10 +54,6 @@ public class ButtonListener implements ActionListener {
 				g.newMethod(c, methodName);
 			}
 		}
-
-
-
-
 	}
 
 }

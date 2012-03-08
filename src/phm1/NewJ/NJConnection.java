@@ -5,7 +5,12 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 public abstract class NJConnection extends JComponent {
-	NJClass to;
+	private NJClass to;
+	private int xTo;
+	private int yTo;
+	private int xFrom;
+	private int yFrom;
+	private boolean horizontal;
 
 	public NJClass getTo() {
 		return to;
@@ -15,6 +20,46 @@ public abstract class NJConnection extends JComponent {
 		this.to = to;
 	}
 	
+	public int getxTo() {
+		return xTo;
+	}
+
+	public void setxTo(int xTo) {
+		this.xTo = xTo;
+	}
+
+	public int getyTo() {
+		return yTo;
+	}
+
+	public void setyTo(int yTo) {
+		this.yTo = yTo;
+	}
+
+	public int getxFrom() {
+		return xFrom;
+	}
+
+	public void setxFrom(int xFrom) {
+		this.xFrom = xFrom;
+	}
+
+	public int getyFrom() {
+		return yFrom;
+	}
+
+	public void setyFrom(int yFrom) {
+		this.yFrom = yFrom;
+	}
+
+	public boolean isHorizontal() {
+		return horizontal;
+	}
+
+	public void setHorizontal(boolean horizontal) {
+		this.horizontal = horizontal;
+	}
+
 	public NJConnection(){}
 
 	public NJConnection(NJClass to) {
@@ -22,7 +67,24 @@ public abstract class NJConnection extends JComponent {
 	}
 	
 	public void draw (Graphics g, NJClass from) {
-		g.drawLine(from.getX(), from.getY(), to.getX(), to.getY()); //TODO change to stick to better parts of the class
+		if(to != null){
+			xTo = to.getX() + (to.getA() / 2);
+			yTo = to.getY() + (to.getB() / 2);
+		}
+		xFrom = from.getX() + (from.getA() / 2);
+		yFrom = from.getY() + (from.getB() / 2);
+		horizontal = Math.abs(xTo - xFrom) > Math.abs(yTo - yFrom);
+		if(horizontal){
+			g.drawLine(xFrom, yFrom, xTo, yFrom);
+			g.drawLine(xTo, yFrom, xTo, yTo);
+		} else {
+			g.drawLine(xFrom, yFrom, xFrom, yTo);
+			g.drawLine(xFrom, yTo, xTo, yTo);
+		}
 	}
-
+	
+	public void setXYto(int x, int y){
+		this.xTo = x;
+		this.yTo = y;
+	}
 }

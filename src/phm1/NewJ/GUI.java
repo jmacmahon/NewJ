@@ -68,8 +68,10 @@ public class GUI {
 	
 	public void drawAll(Graphics g) {
 		for (NJClass c : model.getClasses()) {
-			c.draw(g, c == dPanel.getSelected());
 			c.drawConnections(g);
+		}
+		for (NJClass c : model.getClasses()) {
+			c.draw(g, c == dPanel.getSelected());
 		}
 	}
 	
@@ -81,14 +83,6 @@ public class GUI {
 	public void deleteSelected() {
 		model.removeClass(dPanel.getSelected());
 		dPanel.repaint();
-	}
-	
-	/*public void repaint(){
-		dPanel.repaint();
-	}*/
-
-	public void unselectAll() {
-		dPanel.setSelected(null);
 	}
 	
 	public NJClass clickedInBox(int x, int y) {

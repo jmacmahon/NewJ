@@ -3,10 +3,8 @@ package phm1.NewJ;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 
 // TODO Separate the JComponent-inheriting parts from the parts which store the actual class data, because mixing GUI and Model is a Bad Thing (tm)
@@ -18,7 +16,7 @@ public class NJClass extends JComponent{
 	private ArrayList<NJMethod> methods;
 	private ArrayList<NJConnection> aggregations;
 	private NJInheritance inherits;
-
+	
 	//graphics variables
 	private int x;
 	private int y;
@@ -49,6 +47,12 @@ public class NJClass extends JComponent{
 	}
 	public void setConnections(ArrayList<NJConnection> aggregations) {
 		this.aggregations = aggregations;
+	}
+	public NJInheritance getInherits() {
+		return inherits;
+	}
+	public void setInherits(NJInheritance inherits) {
+		this.inherits = inherits;
 	}
 	public int getX() {
 		return x;
@@ -109,10 +113,6 @@ public class NJClass extends JComponent{
 	public void addMethod(NJMethod m){
 		this.methods.add(m);
 	}
-
-	public void setInherits(NJInheritance i){
-		this.inherits = i;
-	}
 	
 	public void draw(Graphics g, boolean selected){
 		//draw the rectangle
@@ -135,10 +135,11 @@ public class NJClass extends JComponent{
 	
 	public void drawConnections(Graphics g){
 		for (NJConnection c : aggregations){
-			c.draw(g,  this);
+			c.draw(g, this);
 		}
-		if(this.inherits != null)
+		if(this.inherits != null){
 			this.inherits.draw(g, this);
+		}
 	}
 
 	public int distanceTo(int x, int y) {
