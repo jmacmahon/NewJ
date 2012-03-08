@@ -129,4 +129,11 @@ public class GUI {
 	public void populateEditMenu(NJClass c){
 		getMenus().getEditMenu().populate(c);
 	}
+	public void populateEditMenu(){
+		if(dPanel.getSelected() != null){
+			populateEditMenu(dPanel.getSelected());
+		} else {
+			// TODO
+		}
+	}
 }
