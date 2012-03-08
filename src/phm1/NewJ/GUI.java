@@ -63,7 +63,7 @@ public class GUI {
 		dPanel = new DiagramPanel(this);
 		bPanel = new ButtonPanel(this);
 		menus = new Menus(dPanel, model);
-		mouseListener= new MyMouseListener(dPanel, bPanel);
+		mouseListener= new MyMouseListener(this);
 		mainFrame = new MainFrame(this);
 		mainFrame.setVisible(true);
 	}
