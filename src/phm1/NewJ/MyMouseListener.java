@@ -17,18 +17,6 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	}
 		
 	public void mouseClicked(MouseEvent e) {
-		// made selected box look different -P
-		//calls a method to find the box that has been clicked in - P
-		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
-		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
-		if(box !=null && SwingUtilities.isLeftMouseButton(e)){
-			// TODO Code duplication here, put it in a function - J
-			this.box = box;
-		}
-		else {
-			gui.getdPanel().unselectAll();
-			//dPup.popBackgroundMenu();
-		}
 		gui.getdPanel().setInheriting(false);
 		gui.getbPanel().getInheritanceButton().getModel().setSelected(false);
 	}
@@ -46,13 +34,13 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
-			// TODO Code duplication here, put it in a function - J
-			//gui.getdPanel().unselectAll();
 			gui.getdPanel().setSelected(box);
-			this.box = box;
-			this.offsetX = e.getX() - box.getX();
-			this.offsetY = e.getY() - box.getY();
-			// Works out where the cursor is within the box so we can move the box relative to the mouse - J
+			if(SwingUtilities.isLeftMouseButton(e)){
+				this.box = box;
+				this.offsetX = e.getX() - box.getX();
+				this.offsetY = e.getY() - box.getY();
+				// Works out where the cursor is within the box so we can move the box relative to the mouse - J
+			}
 		}
 		else {
 			gui.getdPanel().unselectAll();

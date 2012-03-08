@@ -1,8 +1,11 @@
 package phm1.NewJ;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 public class GUI {
 	// TODO clean this up. Put things in the relevant JPanel objects if they don't coordinate the whole thing. - J
