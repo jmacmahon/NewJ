@@ -64,7 +64,7 @@ public class Menus extends JMenuBar{
 
 		mainMenu = new JMenu("File");
 		helpMenu = new JMenu("Help");
-		editMenu = new EditMenu();
+		editMenu = new EditMenu(gui);
 
 		saveProject = new JMenuItem("Save");
 		loadProject = new JMenuItem("Load");

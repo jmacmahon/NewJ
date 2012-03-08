@@ -19,8 +19,6 @@ public class ButtonListener implements ActionListener {
 
 		if(action.equals("New Class")){ 
 			NJClass c = new NJClass(g.classNamePrompt(), 100, 100);
-			c.addField(new NJField("asdf", "int", NJAccessModifier.PRIVATE));
-			c.addField(new NJField("teST()", "int", NJAccessModifier.PRIVATE));
 			NJMethod meth = new NJMethod("asd", "String", NJAccessModifier.PUBLIC);
 			c.addMethod(meth);
 			c.getMethods().get(0).addArgument(new NJArgument("test", "int"));

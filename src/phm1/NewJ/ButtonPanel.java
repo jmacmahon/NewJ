@@ -20,10 +20,6 @@ public class ButtonPanel extends JPanel{
 		return deleteButton;
 	}
 
-	public JButton getAddMethodButton() {
-		return addMethodButton;
-	}
-
 	public JToggleButton getInheritanceButton() {
 		return inheritanceButton;
 	}
