@@ -3,12 +3,10 @@ package phm1.NewJ;
 import java.awt.Graphics;
 
 public class NJInheritance extends NJConnection {
-	NJInheritance(NJClass to){
+	public NJInheritance(NJClass to){
 		super(to);
 	}
-	NJInheritance(){
-		super();
-	}
+	public NJInheritance(){}
 	
 	public void draw (Graphics g, NJClass from){
 		super.draw(g, from);
@@ -21,14 +19,14 @@ public class NJInheritance extends NJConnection {
 		} else {
 			if(this.isHorizontal()){
 				// Vertical
-				if(this.getyTo() < this.getyFrom()){
-					vertexAX = this.getxTo();
+				if(this.getYTo() < this.getYFrom()){
+					vertexAX = this.getXTo();
 					vertexAY = this.getTo().getY() + this.getTo().getB();
 					
-					vertexBX = this.getxTo() + 5;
+					vertexBX = this.getXTo() + 5;
 					vertexBY = this.getTo().getY() + this.getTo().getB() + 10;
 					
-					vertexCX = this.getxTo() - 5;
+					vertexCX = this.getXTo() - 5;
 					vertexCY = this.getTo().getY() + this.getTo().getB() + 10;
 				}
 			}

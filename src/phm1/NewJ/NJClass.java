@@ -46,7 +46,7 @@ public class NJClass extends JComponent{
 	public ArrayList<NJConnection> getAggregations() {
 		return aggregations;
 	}
-	public void setConnections(ArrayList<NJConnection> aggregations) {
+	public void setAggregations(ArrayList<NJConnection> aggregations) {
 		this.aggregations = aggregations;
 	}
 	public NJInheritance getInherits() {
