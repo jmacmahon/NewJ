@@ -62,6 +62,18 @@ public class EditMenu extends JMenu {
 		this.add(fields);
 		this.add(methods);
 		renameClass = new JMenuItem("Rename Class");
+		renameClass.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String newName = JOptionPane.showInputDialog("Enter the new name of the class:", c.getName());
+				if(newName == null)
+					return;
+				c.setName(newName);
+				gui.getdPanel().repaint();
+				gui.populateEditMenu();
+			}
+		});
 		this.add(renameClass);
 	}
 	
