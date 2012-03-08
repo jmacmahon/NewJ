@@ -83,6 +83,15 @@ public class GUI {
 		dPanel.repaint();
 	}
 	
+	public NJClass getSelected() {
+		for(NJClass c : model.getClasses()) {
+			if(c.getSelected()) {
+				return c;
+			}
+		}
+		return null;
+	}
+
 	public void unselectAll() {
 		for (NJClass c : model.getClasses()) {
 			c.setSelected(false);
@@ -105,5 +114,9 @@ public class GUI {
 		}
 		// Just return null if we didn't return earlier - J
 		return null;
+	}
+	
+	public void newMethod(NJClass c, String s) {
+		
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class ButtonListener implements ActionListener {
 	private DiagramPanel dP;
 	private GUI g;
+	private NJClass c;
 
 	public ButtonListener(GUI g) {
 		this.g = g;
@@ -52,6 +53,15 @@ public class ButtonListener implements ActionListener {
 			//deletes all boxes
 		}
 		//moved save and load to the menu - p
+		
+		else if (action.equals("Add Method")) {
+			c=g.getSelected();
+			String methodName;
+			if (c!=null) {
+				methodName = JOptionPane.showInputDialog("enter method name");
+				g.newMethod(c, methodName);
+			}
+		}
 
 
 
