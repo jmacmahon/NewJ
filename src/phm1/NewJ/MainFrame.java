@@ -17,8 +17,8 @@ public class MainFrame extends JFrame {
 		
 		//add shit to the frame - p
 		this.add(gui.getdPanel(), BorderLayout.CENTER);
-		this.add(gui.getdPanel(), BorderLayout.WEST);
-		this.add(gui.getdPanel(), BorderLayout.NORTH);
+		this.add(gui.getbPanel(), BorderLayout.WEST);
+		this.add(gui.getMenus(), BorderLayout.NORTH);
 		
 		//mouse listener stuff - p
 		gui.getdPanel().addMouseListener(gui.getMouseListener());

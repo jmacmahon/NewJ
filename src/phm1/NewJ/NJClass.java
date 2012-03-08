@@ -16,14 +16,14 @@ public class NJClass extends JComponent{
 	private String name;
 	private ArrayList<NJField> fields;
 	private ArrayList<NJMethod> methods;
-	private ArrayList<NJConnection> connections;
+	private ArrayList<NJConnection> aggregations;
+	private NJInheritance inherits;
 
 	//graphics variables
 	private int x;
 	private int y;
 	private int a;
 	private int b;
-	private boolean selected;
 	private char[] nameChars;
 
 	public String getName() {
@@ -44,11 +44,11 @@ public class NJClass extends JComponent{
 	public void setMethods(ArrayList<NJMethod> methods) {
 		this.methods = methods;
 	}
-	public ArrayList<NJConnection> getConnections() {
-		return connections;
+	public ArrayList<NJConnection> getAggregations() {
+		return aggregations;
 	}
-	public void setConnections(ArrayList<NJConnection> connections) {
-		this.connections = connections;
+	public void setConnections(ArrayList<NJConnection> aggregations) {
+		this.aggregations = aggregations;
 	}
 	public int getX() {
 		return x;
@@ -91,9 +91,9 @@ public class NJClass extends JComponent{
 		this.a=a; //horizontal length of box
 		this.b=b; //vertical height of box
 		
-		this.connections = new ArrayList<NJConnection>();
+		this.aggregations = new ArrayList<NJConnection>();
+		this.inherits = null;
 
-		this.selected = false;
 		nameChars = new char[name.length()];
 		for (int i=0; i< name.length(); i++) {
 			nameChars[i]= name.charAt(i);
@@ -109,19 +109,12 @@ public class NJClass extends JComponent{
 	public void addMethod(NJMethod m){
 		this.methods.add(m);
 	}
-	
-	public void addConnection(NJConnection c){
-		this.connections.add(c);
-	}
-	
-	public boolean getSelected() {
-		return selected;
-	}
 
-	public void setSelected(boolean a) {
-		selected = a;
+	public void setInherits(NJInheritance i){
+		this.inherits = i;
 	}
-	public void draw(Graphics g){
+	
+	public void draw(Graphics g, boolean selected){
 		//draw the rectangle
 
 		if (selected){
@@ -141,9 +134,11 @@ public class NJClass extends JComponent{
 	}
 	
 	public void drawConnections(Graphics g){
-		for (NJConnection c : connections){
+		for (NJConnection c : aggregations){
 			c.draw(g,  this);
 		}
+		if(this.inherits != null)
+			this.inherits.draw(g, this);
 	}
 
 	public int distanceTo(int x, int y) {

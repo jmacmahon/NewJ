@@ -4,9 +4,8 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
-public class NJConnection extends JComponent {
+public abstract class NJConnection extends JComponent {
 	NJClass to;
-	ConnectionType c;
 
 	public NJClass getTo() {
 		return to;
@@ -15,19 +14,11 @@ public class NJConnection extends JComponent {
 	public void setTo(NJClass to) {
 		this.to = to;
 	}
-
-	public ConnectionType getC() {
-		return c;
-	}
-
-	public void setC(ConnectionType c) {
-		this.c = c;
-	}
+	
 	public NJConnection(){}
 
-	public NJConnection(NJClass to, ConnectionType c) {
+	public NJConnection(NJClass to) {
 		this.to = to;
-		this.c=c;
 	}
 	
 	public void draw (Graphics g, NJClass from) {

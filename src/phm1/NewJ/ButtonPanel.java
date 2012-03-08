@@ -5,8 +5,29 @@ import java.awt.*;
 
 public class ButtonPanel extends JPanel{
 
-	JButton newClassButton, connectionButton, clearButton, deleteButton, addMethodButton;
+	JButton newClassButton, clearButton, deleteButton, addMethodButton;
+	JToggleButton inheritanceButton;
 	
+	public JButton getNewClassButton() {
+		return newClassButton;
+	}
+
+	public JButton getClearButton() {
+		return clearButton;
+	}
+
+	public JButton getDeleteButton() {
+		return deleteButton;
+	}
+
+	public JButton getAddMethodButton() {
+		return addMethodButton;
+	}
+
+	public JToggleButton getInheritanceButton() {
+		return inheritanceButton;
+	}
+
 	public ButtonPanel(GUI g) {
 		this.setLayout(new GridLayout(10, 1));
 		this.setSize(100, 200);
@@ -14,7 +35,7 @@ public class ButtonPanel extends JPanel{
 		
 		//create buttons
 		newClassButton = new JButton("New Class");
-		connectionButton = new JButton("New Connection");
+		inheritanceButton = new JToggleButton("Add Inheritance");
 		deleteButton = new JButton("Delete Selected");
 		clearButton = new JButton("Delete All");
 		addMethodButton = new JButton("Add Method");
@@ -26,7 +47,7 @@ public class ButtonPanel extends JPanel{
 		
 		//add the buttons 
 		this.add(newClassButton);
-		this.add(connectionButton);
+		this.add(inheritanceButton);
 		this.add(deleteButton);
 		this.add(clearButton);
 		this.add(addMethodButton);
@@ -34,7 +55,7 @@ public class ButtonPanel extends JPanel{
 		
 		//add the listeners
 		newClassButton.addActionListener(bList);
-		connectionButton.addActionListener(bList);
+		inheritanceButton.addActionListener(bList);
 		deleteButton.addActionListener(bList);
 		clearButton.addActionListener(bList);
 		addMethodButton.addActionListener(bList);

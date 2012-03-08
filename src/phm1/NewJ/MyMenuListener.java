@@ -51,7 +51,7 @@ public class MyMenuListener implements ActionListener{
 			//TODO this file chooser will work eventually promise
 			try {
 				gui.getModel().load(fileName);
-				gui.repaint();
+				gui.getdPanel().repaint();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

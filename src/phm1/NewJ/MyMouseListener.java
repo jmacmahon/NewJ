@@ -9,7 +9,6 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 
 	private NJClass box;
 	private NJClass box2;
-	private ConnectionType connection;
 	private int offsetX;
 	private int offsetY;
 	private GUI gui;
@@ -24,20 +23,21 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null && SwingUtilities.isLeftMouseButton(e) && box2==null){
+			// TODO Code duplication here, put it in a function - J
 			gui.getdPanel().unselectAll();
-			box.setSelected(true);
+			gui.getdPanel().setSelected(box);
 			this.box = box;
 		}
 		else if (box !=null && SwingUtilities.isRightMouseButton(e)) {
+			// TODO Code duplication here, put it in a function - J
 			gui.getdPanel().unselectAll();
-			box.setSelected(true);
+			gui.getdPanel().setSelected(box);
 			this.box2=box;
 			//dPup.popBoxMenu();	
 		}
 		
 		else if (box !=null && SwingUtilities.isLeftMouseButton(e) && box2 !=null) {
-			connection = ConnectionType.extendsConnection;
-			gui.getdPanel().addConnection(box, box2, connection);
+			//gui.getdPanel().addConnection(box, box2);
 		}
 		else {
 			gui.unselectAll();
@@ -46,8 +46,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		//gui.drawTempConnection();
 	}
 
 	public void mouseExited(MouseEvent arg0) {
@@ -59,8 +58,9 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
+			// TODO Code duplication here, put it in a function - J
 			gui.unselectAll();
-			box.setSelected(true);
+			gui.getdPanel().setSelected(box);
 			this.box = box;
 			this.offsetX = e.getX() - box.getX();
 			this.offsetY = e.getY() - box.getY();
@@ -84,15 +84,17 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			int newY = e.getY() - this.offsetY;
 			// Moves relative to the cursor - J
 			box.update(newX, newY);
-			gui.repaint();
+			gui.getdPanel().repaint();
 		}
 		else {
 			gui.unselectAll();
 		}
 	}
 
-	public void mouseMoved(MouseEvent arg0) {
-		//don't need anything here yet
+	public void mouseMoved(MouseEvent e) {
+		if(gui.getdPanel().getInheriting() && gui.getdPanel().getTempInheritance() != null){
+			
+		}
 	}
 
 	@Override

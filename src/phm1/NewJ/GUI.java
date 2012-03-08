@@ -2,19 +2,17 @@ package phm1.NewJ;
 
 import java.awt.*;
 
-import java.util.Vector;
-
 import javax.swing.JOptionPane;
 
 public class GUI {
-	// This really is a bit useless now but getting rid of it would break things, so I'll take the hacky approach now and clean up later :P - J
-	Model model;
-	DiagramPanel dPanel;
-	ButtonPanel bPanel;
-	MyMouseListener mouseListener;
-	Menus menus;
-	MyMenuListener menuListener;
-	MainFrame mainFrame;
+	// TODO clean this up. Put things in the relevant JPanel objects if they don't coordinate the whole thing. - J
+	private Model model;
+	private DiagramPanel dPanel;
+	private ButtonPanel bPanel;
+	private MyMouseListener mouseListener;
+	private Menus menus;
+	private MyMenuListener menuListener;
+	private MainFrame mainFrame;
 	
 	public Model getModel() {
 		return model;
@@ -50,7 +48,7 @@ public class GUI {
 	
 	public void addClass(NJClass c) {
 		model.addClass(c);
-		repaint();
+		dPanel.repaint();
 	}
 	
 	public boolean classNameInUse(String name){
@@ -70,43 +68,27 @@ public class GUI {
 	
 	public void drawAll(Graphics g) {
 		for (NJClass c : model.getClasses()) {
-			c.draw(g);
+			c.draw(g, c == dPanel.getSelected());
 			c.drawConnections(g);
 		}
 	}
 	
 	public void deleteAll() {
 		model.clear();
-		repaint();
-	}
-	
-	public void deleteSelected() {
-		for(NJClass c : model.getClasses()){
-			if(c.getSelected()){
-				model.removeClass(c);
-				return;
-			}
-		}
-		repaint();
-	}
-	
-	public void repaint(){
 		dPanel.repaint();
 	}
 	
-	public NJClass getSelected() {
-		for(NJClass c : model.getClasses()) {
-			if(c.getSelected()) {
-				return c;
-			}
-		}
-		return null;
+	public void deleteSelected() {
+		model.removeClass(dPanel.getSelected());
+		dPanel.repaint();
 	}
+	
+	/*public void repaint(){
+		dPanel.repaint();
+	}*/
 
 	public void unselectAll() {
-		for (NJClass c : model.getClasses()) {
-			c.setSelected(false);
-		}
+		dPanel.setSelected(null);
 	}
 	
 	public NJClass clickedInBox(int x, int y) {

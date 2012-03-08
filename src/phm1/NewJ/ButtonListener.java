@@ -5,12 +5,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ButtonListener implements ActionListener {
-	private DiagramPanel dP;
 	private GUI g;
 	private NJClass c;
+	private boolean inheritance;
 
 	public ButtonListener(GUI g) {
 		this.g = g;
+		this.inheritance = false;
 	}
 
 	public void actionPerformed(ActionEvent a) {
@@ -25,12 +26,8 @@ public class ButtonListener implements ActionListener {
 		}
 
 
-		else if(action.equals("New Connection")){
-			ConnectionComboBox createConnection = new ConnectionComboBox();
-			createConnection.addActionListener(this);
-			/*
-			 * the idea here is to pop up a combo box with 3 dropdown lists
-			 */
+		else if(action.equals("Add Inheritance")){
+			g.getdPanel().setInheriting(g.getbPanel().getInheritanceButton().getModel().isSelected());
 		}
 
 
@@ -46,7 +43,7 @@ public class ButtonListener implements ActionListener {
 		//moved save and load to the menu - p
 		
 		else if (action.equals("Add Method")) {
-			c=g.getSelected();
+			c=g.getdPanel().getSelected();
 			String methodName;
 			if (c!=null) {
 				methodName = JOptionPane.showInputDialog("enter method name");
