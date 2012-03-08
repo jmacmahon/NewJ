@@ -17,16 +17,7 @@ public class ButtonListener implements ActionListener {
 		String action = a.getActionCommand();
 
 		if(action.equals("New Class")){ 
-			String className;
-			//this is the shit that happens when you click the new class button - p
-
-			className = JOptionPane.showInputDialog("enter class name");
-			//pops up a dialog box to get the name for the new class
-
-			if (className == null || className.length() == 0) { 
-				className = "Untitled" + Integer.toString(g.getModel().getClassCount() + 1);
-			}
-			NJClass c = new NJClass(className, 100, 100, 100, 100);
+			NJClass c = new NJClass(g.classNamePrompt(), 100, 100, 100, 100);
 			g.addClass(c);
 
 			//TODO put the box somewhere useful - maybe work out where is blank on the screen

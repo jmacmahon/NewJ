@@ -27,6 +27,14 @@ public class Model {
 		classes.add(c);
 	}
 	
+	public NJClass getClassByName(String name){
+		for(NJClass c : classes){
+			if(c.getName().equals(name))
+				return c;
+		}
+		return null;
+	}
+	
 	public void removeClass(NJClass c){
 		classes.remove(c);
 	}
