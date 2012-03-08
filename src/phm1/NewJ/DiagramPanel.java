@@ -25,7 +25,7 @@ public class DiagramPanel extends JPanel{
 
 	public void setSelected(NJClass selected) {
 		if(inheriting){
-			if(selected == null){
+			if(selected == null && this.selected != null){
 				this.selected.setInherits(null);
 			} else if(selected != null && this.selected.getInherits() != null){
 				this.selected.getInherits().setTo(selected);
