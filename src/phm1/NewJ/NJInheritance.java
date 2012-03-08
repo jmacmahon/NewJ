@@ -19,7 +19,12 @@ public class NJInheritance extends NJConnection {
 		} else {
 			if(this.isHorizontal()){
 				// Vertical
-				if(this.getYTo() < this.getYFrom()){
+				if(this.getTo().getY() < this.getYFrom() && (this.getTo().getY() + this.getTo().getB()) > this.getYFrom()){
+					// Actually hitting the horizontal side
+					
+				}
+				else if(this.getYTo() < this.getYFrom()){
+					// Hitting the bottom
 					vertexAX = this.getXTo();
 					vertexAY = this.getTo().getY() + this.getTo().getB();
 					
