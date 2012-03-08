@@ -50,7 +50,7 @@ public class GUI {
 	
 	public void addClass(NJClass c) {
 		model.addClass(c);
-		dPanel.repaint();
+		repaint();
 	}
 	
 	public boolean classNameInUse(String name){
@@ -77,7 +77,7 @@ public class GUI {
 	
 	public void deleteAll() {
 		model.clear();
-		dPanel.repaint();
+		repaint();
 	}
 	
 	public void deleteSelected() {
@@ -87,6 +87,10 @@ public class GUI {
 				return;
 			}
 		}
+		repaint();
+	}
+	
+	public void repaint(){
 		dPanel.repaint();
 	}
 	
@@ -98,6 +102,7 @@ public class GUI {
 		}
 		return null;
 	}
+
 	public void unselectAll() {
 		for (NJClass c : model.getClasses()) {
 			c.setSelected(false);

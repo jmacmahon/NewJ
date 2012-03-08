@@ -11,11 +11,11 @@ public class Menus extends JMenuBar{
 	JMenuItem saveProject, loadProject, exitProgram;
 	JMenuItem helpNew, helpDelete, helpDelAll;
 	MyMenuListener mML;
-	Model model;
+	GUI gui;
 	
-		public Menus(DiagramPanel dP, Model m){
-			model = m;
-			mML = new MyMenuListener(this, dP, model);
+		public Menus(GUI g){
+			this.gui = g;
+			mML = new MyMenuListener(gui);
 			
 			mainMenu = new JMenu("File");
 			editMenu = new JMenu("Edit");

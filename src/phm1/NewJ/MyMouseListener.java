@@ -7,34 +7,29 @@ import javax.swing.event.PopupMenuListener;
 
 public class MyMouseListener implements MouseListener, MouseMotionListener, PopupMenuListener {
 
-	private DiagramPanel dP;
-	private ButtonPanel bP;
 	private NJClass box;
 	private NJClass box2;
 	private ConnectionType connection;
-	//private DiagramPopup dPup;
 	private int offsetX;
 	private int offsetY;
+	private GUI gui;
 	
-	
-	MyMouseListener(DiagramPanel d, ButtonPanel b) {
-		dP = d;
-		bP = b;
-		//dPup = p;
+	MyMouseListener(GUI g) {
+		this.gui = g;
 	}
 		
 	public void mouseClicked(MouseEvent e) {
 		// made selected box look different -P
 		//calls a method to find the box that has been clicked in - P
-		NJClass box = dP.findNearestClass(e.getX(), e.getY());
+		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null && SwingUtilities.isLeftMouseButton(e) && box2==null){
-			dP.unselectAll();
+			gui.getdPanel().unselectAll();
 			box.setSelected(true);
 			this.box = box;
 		}
 		else if (box !=null && SwingUtilities.isRightMouseButton(e)) {
-			dP.unselectAll();
+			gui.getdPanel().unselectAll();
 			box.setSelected(true);
 			this.box2=box;
 			//dPup.popBoxMenu();	
@@ -42,10 +37,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		
 		else if (box !=null && SwingUtilities.isLeftMouseButton(e) && box2 !=null) {
 			connection = ConnectionType.extendsConnection;
-			dP.addConnection(box, box2, connection);
+			gui.getdPanel().addConnection(box, box2, connection);
 		}
 		else {
-			dP.unselectAll();
+			gui.unselectAll();
 			//dPup.popBackgroundMenu();
 		}
 	}
@@ -61,10 +56,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	}
 
 	public void mousePressed(MouseEvent e) {
-		NJClass box = dP.findNearestClass(e.getX(), e.getY());
+		NJClass box = gui.getdPanel().findNearestClass(e.getX(), e.getY());
 		//if the mouse is clicked inside a box, it sets this.box to that box so other methods can use it - P
 		if(box !=null){
-			dP.unselectAll();
+			gui.unselectAll();
 			box.setSelected(true);
 			this.box = box;
 			this.offsetX = e.getX() - box.getX();
@@ -72,7 +67,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			// Works out where the cursor is within the box so we can move the box relative to the mouse - J
 		}
 		else {
-			dP.unselectAll();
+			gui.unselectAll();
 		}
 	}
 
@@ -89,10 +84,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			int newY = e.getY() - this.offsetY;
 			// Moves relative to the cursor - J
 			box.update(newX, newY);
-			dP.repaint();
+			gui.repaint();
 		}
 		else {
-			dP.unselectAll();
+			gui.unselectAll();
 		}
 	}
 
