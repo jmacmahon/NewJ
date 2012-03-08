@@ -41,6 +41,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 				this.offsetY = e.getY() - box.getY();
 				// Works out where the cursor is within the box so we can move the box relative to the mouse - J
 			}
+			gui.populateEditMenu(box);
 		}
 		else {
 			gui.getdPanel().unselectAll();

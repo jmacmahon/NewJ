@@ -7,11 +7,56 @@ import javax.swing.JMenuItem;
 public class Menus extends JMenuBar{
 
 	//TODO HEY JOE WHAT OTHER BUTTONS DO YOU WANT IN THE MENU - p
-	JMenu mainMenu, classMenu, helpMenu;
+	JMenu mainMenu, helpMenu;
+	EditMenu editMenu;
 	JMenuItem saveProject, loadProject, exitProgram;
 	JMenuItem helpNew, helpDelete, helpDelAll;
 	MyMenuListener mML;
 	GUI gui;
+
+	public JMenu getMainMenu() {
+		return mainMenu;
+	}
+
+	public EditMenu getEditMenu() {
+		return editMenu;
+	}
+
+	public JMenu getHelpMenu() {
+		return helpMenu;
+	}
+
+	public JMenuItem getSaveProject() {
+		return saveProject;
+	}
+
+	public JMenuItem getLoadProject() {
+		return loadProject;
+	}
+
+	public JMenuItem getExitProgram() {
+		return exitProgram;
+	}
+
+	public JMenuItem getHelpNew() {
+		return helpNew;
+	}
+
+	public JMenuItem getHelpDelete() {
+		return helpDelete;
+	}
+
+	public JMenuItem getHelpDelAll() {
+		return helpDelAll;
+	}
+
+	public MyMenuListener getmML() {
+		return mML;
+	}
+
+	public GUI getGui() {
+		return gui;
+	}
 
 	public Menus(GUI g){
 		this.gui = g;
@@ -19,7 +64,7 @@ public class Menus extends JMenuBar{
 
 		mainMenu = new JMenu("File");
 		helpMenu = new JMenu("Help");
-		classMenu = new JMenu("Class");
+		editMenu = new EditMenu();
 
 		saveProject = new JMenuItem("Save");
 		loadProject = new JMenuItem("Load");
@@ -30,17 +75,17 @@ public class Menus extends JMenuBar{
 		helpDelAll = new JMenuItem("\"Delete All\" Help");
 
 		this.add(mainMenu);
-		this.add(classMenu);
+		this.add(editMenu);
 		this.add(helpMenu);
 
 		mainMenu.add(saveProject);
 		mainMenu.add(loadProject);
 		mainMenu.add(exitProgram);
-
+		
 		helpMenu.add(helpNew);
 		helpMenu.add(helpDelete);
 		helpMenu.add(helpDelAll);
-
+		
 		saveProject.addActionListener(mML);
 		loadProject.addActionListener(mML);
 		exitProgram.addActionListener(mML);
