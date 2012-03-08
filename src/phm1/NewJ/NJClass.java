@@ -102,6 +102,10 @@ public class NJClass extends JComponent{
 		this.fields.remove(f);
 	}
 	
+	public void deleteMethod(NJMethod m){
+		this.methods.remove(m);
+	}
+	
 	public void addMethod(NJMethod m){
 		this.methods.add(m);
 	}

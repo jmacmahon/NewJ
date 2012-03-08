@@ -82,11 +82,13 @@ public class GUI {
 	public void deleteAll() {
 		model.clear();
 		dPanel.repaint();
+		populateEditMenu();
 	}
 	
 	public void deleteSelected() {
 		model.removeClass(dPanel.getSelected());
 		dPanel.repaint();
+		populateEditMenu();
 	}
 	
 	public NJClass clickedInBox(int x, int y) {
