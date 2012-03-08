@@ -22,7 +22,7 @@ public class TestModel {
 			NJMethod myMethod = new NJMethod("aMethod", "void", NJAccessModifier.PUBLIC);
 			myMethod.addArgument(myArgument);
 
-			NJClass myTestClass = new NJClass("TestName", 100, 100, 100, 100);
+			NJClass myTestClass = new NJClass("TestName", 100, 100);
 			myTestClass.addField(myField);
 			myTestClass.addMethod(myMethod);
 			myModel.addClass(myTestClass);

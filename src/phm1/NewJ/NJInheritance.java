@@ -16,7 +16,7 @@ public class NJInheritance extends NJConnection {
 		vertexAX = vertexAY = vertexBX = vertexBY = vertexCX = vertexCY = 0;
 		
 		// TODO For fuck's sake put all of this shit in java.awt.Point objects... - J
-		if(this.getTo() != null){
+		if(this.getTo() == null){
 			//TODO
 		} else {
 			if(this.isHorizontal()){

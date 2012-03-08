@@ -7,5 +7,12 @@ public class NJField extends NJAbstractProperty {
 		this.setAccessModifier(accessModifier);
 	}
 	
+	public String getDisplayString(){
+		String out = super.getDisplayString();
+		out += " : ";
+		out += this.getType();
+		return out;
+	}
+	
 	public NJField(){}
 }

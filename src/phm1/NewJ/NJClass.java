@@ -1,6 +1,8 @@
 package phm1.NewJ;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -22,7 +24,6 @@ public class NJClass extends JComponent{
 	private int y;
 	private int a;
 	private int b;
-	private char[] nameChars;
 
 	public String getName() {
 		return name;
@@ -78,30 +79,17 @@ public class NJClass extends JComponent{
 	public void setB(int b) {
 		this.b = b;
 	}
-	public char[] getNameChars() {
-		return nameChars;
-	}
-	public void setNameChars(char[] nameChars) {
-		this.nameChars = nameChars;
-	}
 	
-	NJClass(String name, int x, int y, int a, int b){
+	NJClass(String name, int x, int y){
 		this.setName(name);
 		this.setFields(new ArrayList<NJField>());
 		this.setMethods(new ArrayList<NJMethod>());
 
 		this.x=x; //x position in diagram panel of top left corner of box
 		this.y=y; //y position in diagram panel of top left corner of box
-		this.a=a; //horizontal length of box
-		this.b=b; //vertical height of box
 		
 		this.aggregations = new ArrayList<NJConnection>();
 		this.inherits = null;
-
-		nameChars = new char[name.length()];
-		for (int i=0; i< name.length(); i++) {
-			nameChars[i]= name.charAt(i);
-		}
 	}
 
 	public NJClass() {}
@@ -115,6 +103,27 @@ public class NJClass extends JComponent{
 	}
 	
 	public void draw(Graphics g, boolean selected){
+		Font font = new Font("Courier New", Font.PLAIN, 12);
+		String max = "";
+		String tmp;
+		for(NJField f : fields){
+			tmp = f.getDisplayString();
+			if(tmp.length() > max.length())
+				max = tmp;
+		}
+		for(NJMethod m : methods){
+			tmp = m.getDisplayString();
+			if(tmp.length() > max.length())
+				max = tmp;
+		}
+		tmp = name;
+		if(tmp.length() > max.length())
+			max = tmp;
+		
+		FontMetrics metrics = g.getFontMetrics();
+		int maxWidth = metrics.stringWidth(max);
+		this.a = maxWidth + 10;
+		this.b = 13*fields.size() + 13*methods.size() + 13 + 7;
 		//draw the rectangle
 
 		if (selected){
@@ -126,10 +135,22 @@ public class NJClass extends JComponent{
 		g.drawRect(this.x, this.y, this.a, this.b);
 		g.setColor(Color.WHITE);
 		g.fillRect(this.x+1, this.y+1, this.a-1, this.b-1);
+		
 		g.setColor(Color.BLACK);
-		g.drawChars(nameChars, 0, name.length(), this.x+5, this.y+11);
-		g.drawLine(this.x, this.y+12, this.x+this.a, this.y+12);
-		g.drawLine(this.x, this.y+50, this.x+this.a, this.y+50);
+		g.drawString(name, this.x+5, this.y+12);
+		
+		g.drawLine(this.x, this.y + 14, this.x + this.a, this.y + 14);
+		NJField f;
+		for(int i = 1; i <= fields.size(); i++){
+			f = fields.get(i - 1);
+			g.drawString(f.getDisplayString(), this.x + 5, this.y + 14 + 13*i);
+		}
+		g.drawLine(this.x, this.y + 17 + 13*fields.size(), this.x + this.a, this.y + 17 + 13*fields.size());
+		NJMethod m;
+		for(int i = 1; i <= methods.size(); i++){
+			m = methods.get(i - 1);
+			g.drawString(m.getDisplayString(), this.x + 5, this.y + 16 + 13*fields.size() + 13*i);
+		}
 
 	}
 	

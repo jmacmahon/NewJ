@@ -21,6 +21,23 @@ public class NJMethod extends NJAbstractProperty {
 	}
 	public NJMethod(){}
 	
+	public String getDisplayString(){
+		String out = super.getDisplayString();
+		for(NJArgument a : arguments){
+			if(a == arguments.get(0)){
+				out += "(";
+			} else {
+				out += ", ";
+			}
+			out += a.getName();
+			out += " : ";
+			out += a.getType();
+		}
+		out += ") : ";
+		out += this.getType();
+		return out;
+	}
+	
 	public void addArgument(NJArgument a){
 		arguments.add(a);
 	}
