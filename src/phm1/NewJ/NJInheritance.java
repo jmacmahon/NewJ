@@ -17,23 +17,50 @@ public class NJInheritance extends NJConnection {
 		if(this.getTo() == null){
 			//TODO
 		} else {
-			if(this.isHorizontal()){
-				// Vertical
-				if(this.getTo().getY() < this.getYFrom() && (this.getTo().getY() + this.getTo().getB()) > this.getYFrom()){
-					// Actually hitting the horizontal side
-					
+			// Vertical
+			if(this.getTo().getY() < this.getYFrom() && (this.getTo().getY() + this.getTo().getB()) > this.getYFrom()){
+				// Actually hitting the horizontal side
+				if(this.getXTo() < this.getXFrom()){
+					// Arrow pointing left
+					vertexAX = this.getTo().getX() + this.getTo().getA();
+					vertexAY = this.getYFrom();
+
+					vertexBX = this.getTo().getX() + this.getTo().getA() + 10;
+					vertexBY = this.getYFrom() - 5;
+
+					vertexCX = this.getTo().getX() + this.getTo().getA() + 10;
+					vertexCY = this.getYFrom() + 5;
+				} else {
+					// Arrow pointing right
+					vertexAX = this.getTo().getX();
+					vertexAY = this.getYFrom();
+
+					vertexBX = this.getTo().getX() - 10;
+					vertexBY = this.getYFrom() + 5;
+
+					vertexCX = this.getTo().getX() - 10;
+					vertexCY = this.getYFrom() - 5;
 				}
-				else if(this.getYTo() < this.getYFrom()){
-					// Hitting the bottom
-					vertexAX = this.getXTo();
-					vertexAY = this.getTo().getY() + this.getTo().getB();
-					
-					vertexBX = this.getXTo() + 5;
-					vertexBY = this.getTo().getY() + this.getTo().getB() + 10;
-					
-					vertexCX = this.getXTo() - 5;
-					vertexCY = this.getTo().getY() + this.getTo().getB() + 10;
-				}
+			} else if(this.getYTo() < this.getYFrom()){
+				// Hitting the bottom
+				vertexAX = this.getXTo();
+				vertexAY = this.getTo().getY() + this.getTo().getB();
+
+				vertexBX = this.getXTo() + 5;
+				vertexBY = this.getTo().getY() + this.getTo().getB() + 10;
+
+				vertexCX = this.getXTo() - 5;
+				vertexCY = this.getTo().getY() + this.getTo().getB() + 10;
+			} else {
+				// Hitting the top
+				vertexAX = this.getXTo();
+				vertexAY = this.getTo().getY();
+
+				vertexBX = this.getXTo() - 5;
+				vertexBY = this.getTo().getY() - 10;
+
+				vertexCX = this.getXTo() + 5;
+				vertexCY = this.getTo().getY() - 10;
 			}
 		}
 		g.drawLine(vertexAX, vertexAY, vertexBX, vertexBY);
