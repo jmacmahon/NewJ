@@ -1,12 +1,10 @@
 package phm1.NewJ;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
+import javax.swing.filechooser.*;
 
 public class GUI {
 	// TODO clean this up. Put things in the relevant JPanel objects if they don't coordinate the whole thing. - J
@@ -17,6 +15,7 @@ public class GUI {
 	private Menus menus;
 	private MyMenuListener menuListener;
 	private MainFrame mainFrame;
+	private JFileChooser saveLoadChooser;
 	
 	public Model getModel() {
 		return model;
@@ -46,6 +45,10 @@ public class GUI {
 		return mainFrame;
 	}
 
+	public JFileChooser getSaveLoadChooser() {
+		return saveLoadChooser;
+	}
+
 	GUI(Model m) {
 		this.model = m;
 	}
@@ -68,6 +71,9 @@ public class GUI {
 		mouseListener= new MyMouseListener(this);
 		mainFrame = new MainFrame(this);
 		populateEditMenu();
+		saveLoadChooser = new JFileChooser();
+		saveLoadChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		saveLoadChooser.setFileFilter(new FileNameExtensionFilter("XML files (.xml)", "xml"));
 		mainFrame.setVisible(true);
 	}
 	
@@ -132,11 +138,34 @@ public class GUI {
 	public void populateEditMenu(NJClass c){
 		getMenus().getEditMenu().populate(c);
 	}
+	
 	public void populateEditMenu(){
 		if(dPanel.getSelected() != null){
 			populateEditMenu(dPanel.getSelected());
 		} else {
 			getMenus().getEditMenu().populate();
+		}
+	}
+	
+	public void chooseAndLoad(){
+		if(this.saveLoadChooser.showOpenDialog(this.mainFrame) == JFileChooser.APPROVE_OPTION){
+			try {
+				this.model.load(this.saveLoadChooser.getSelectedFile());
+				dPanel.repaint();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(this.mainFrame, "There was an error loading the file.", "IOException", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	
+	public void chooseAndSave(){
+		if(this.saveLoadChooser.showOpenDialog(this.mainFrame) == JFileChooser.APPROVE_OPTION){
+			try {
+				this.model.save(this.saveLoadChooser.getSelectedFile());
+				dPanel.repaint();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(this.mainFrame, "There was an error saving to the file.", "IOException", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }

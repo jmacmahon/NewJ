@@ -23,44 +23,12 @@ public class MyMenuListener implements ActionListener{
 		
 		
 		if (action.equals("Save")) {
-			fileName = JOptionPane.showInputDialog("Enter name to save file as:");
-			
-			if (fileName != null && !fileName.contains("/") && !fileName.isEmpty()) {
-				try {
-					gui.getModel().save(fileName+ ".xml");
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			gui.chooseAndSave();
 		}
 	
 		
 		else if(action.equals("Load")){
-			// This actually works now - J
-			fileName = JOptionPane.showInputDialog("Enter name of file to load from:");
-			
-			//int returnVal = chooser.showOpenDialog();
-		    //if(returnVal == JFileChooser.APPROVE_OPTION) {
-		    //	loadFile = chooser.getSelectedFile().getName();
-		    //}
-			//if (loadFile != null)
-			
-			//TODO this file chooser will work eventually promise
-			try {
-				gui.getModel().load(fileName);
-				gui.getdPanel().repaint();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+			gui.chooseAndLoad();
 		}
 		
 		else if(action.equals("Exit")) {

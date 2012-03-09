@@ -45,13 +45,28 @@ public class Model {
 	}
 	
 	public void save(String filename) throws FileNotFoundException, IOException {
-		XMLEncoder xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
+		save(new FileOutputStream(filename));
+	}
+	
+	public void save(File file) throws IOException {
+		save(new FileOutputStream(file));
+	}
+	
+	public void save(FileOutputStream f) throws IOException {
+		XMLEncoder xe = new XMLEncoder(new BufferedOutputStream(f));
 		xe.writeObject(this.classes);
 		xe.close();
 	}
 	
 	public void load(String filename) throws FileNotFoundException, IOException {
-		FileInputStream f = new FileInputStream(filename);
+		load(new FileInputStream(filename));
+	}
+	
+	public void load(File file) throws IOException {
+		load(new FileInputStream(file));
+	}
+	
+	public void load(FileInputStream f) throws IOException {
 		XMLDecoder xd = new XMLDecoder(f);
 		this.classes = (ArrayList<NJClass>)xd.readObject();
 		xd.close();
