@@ -127,21 +127,6 @@ public class GUI {
 		
 	}
 	
-	public String classNamePrompt(){
-		String className;
-
-		className = JOptionPane.showInputDialog("Enter class name");
-		//pops up a dialog box to get the name for the new class
-		if(classNameInUse(className)){
-			JOptionPane.showMessageDialog(getMainFrame(), "That class name is already in use.", "Error", JOptionPane.ERROR_MESSAGE);
-			className = classNamePrompt();
-		}
-		if (className == null || className.length() == 0) { 
-			className = "Untitled" + Integer.toString(getModel().getClassCount() + 1);
-		}
-		return className;
-	}
-	
 	public void populateEditMenu(NJClass c){
 		getMenus().getEditMenu().populate(c);
 	}
@@ -184,5 +169,23 @@ public class GUI {
 				JOptionPane.showMessageDialog(this.mainFrame, "There was an error exporting the project. Are you exporting to a real directory?", "IOException", JOptionPane.ERROR_MESSAGE);
 			}
 		}
+	}
+	
+	private String classNamePrompt(){
+		// Dialog box to get the new class name
+		return JOptionPane.showInputDialog("Enter class name:", "Untitled" + Integer.toString(getModel().getClassCount() + 1));
+	}
+	
+	public void newClass(){
+		String className = this.classNamePrompt();
+		if(className == null)
+			return;
+		while(this.classNameInUse(className)){
+			JOptionPane.showMessageDialog(this.mainFrame, "That class name is already in use.", "Error", JOptionPane.ERROR_MESSAGE);
+			className = this.classNamePrompt();
+		}
+		
+		NJClass c = new NJClass(className, 100, 100);
+		addClass(c);
 	}
 }

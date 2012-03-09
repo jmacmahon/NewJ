@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class EditMenu extends JMenu {
-	JMenu fields;
-	JMenu methods;
+	JMenu fields, methods, aggregations;
 	GUI gui;
 	NJClass njClass;
 	
@@ -39,6 +38,12 @@ public class EditMenu extends JMenu {
 		}
 		JMenuItem addMethod = new JMenuItem("Add Method");
 		
+		aggregations = new JMenu("Aggregations");
+		for(NJAggregation a : c.getAggregations()){
+			aggregations.add(new AggregationMenu(a));
+		}
+		JMenuItem addAggregation = new JMenuItem("Add an aggregate class");
+		
 		// Anonymous ActionListener class, this is some pretty cool stuff. - J
 		addField.addActionListener(new ActionListener() {
 			
@@ -64,10 +69,21 @@ public class EditMenu extends JMenu {
 				gui.populateEditMenu();
 			}
 		});
+		addAggregation.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				gui.getdPanel().setAggregating(true);
+			}
+		});
+		
 		fields.add(addField);
 		methods.add(addMethod);
+		aggregations.add(addAggregation);
 		this.add(fields);
 		this.add(methods);
+		this.add(aggregations);
+		
 		JMenuItem renameClass = new JMenuItem("Rename Class");
 		renameClass.addActionListener(new ActionListener() {
 			
@@ -305,6 +321,55 @@ public class EditMenu extends JMenu {
 			this.add(rename);
 			this.add(changeAM);
 			this.add(changeType);
+		}
+	}
+
+	private class AggregationMenu extends JMenu {
+		private NJAggregation aggregation;
+		private JMenuItem delete;
+		private JMenu changeNumber;
+		
+		AggregationMenu(NJAggregation a){
+			super(a.getTo().getName());
+			this.aggregation = a;
+			
+			delete = new JMenuItem("Delete");
+			delete.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					njClass.deleteAggregation(aggregation);
+					gui.getdPanel().repaint();
+					gui.populateEditMenu();
+				}
+			});
+			
+			changeNumber = new JMenu("Change Number");
+			JMenuItem one = new JMenuItem("0..1");
+			JMenuItem many = new JMenuItem("0..*");
+			
+			one.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					aggregation.setMany(false);
+					gui.getdPanel().repaint();
+				}
+			});
+			many.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					aggregation.setMany(true);
+					gui.getdPanel().repaint();
+				}
+			});
+			
+			changeNumber.add(one);
+			changeNumber.add(many);
+			
+			this.add(delete);
+			this.add(changeNumber);
 		}
 	}
 }

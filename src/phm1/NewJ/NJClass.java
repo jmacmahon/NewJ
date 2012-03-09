@@ -14,8 +14,10 @@ public class NJClass extends JComponent{
 	private String name;
 	private ArrayList<NJField> fields;
 	private ArrayList<NJMethod> methods;
-	private ArrayList<NJConnection> aggregations;
+	private ArrayList<NJAggregation> aggregations;
 	private NJInheritance inheritance;
+	
+	private transient NJAggregation tempAggregation;
 	
 	//graphics variables
 	private int x;
@@ -41,10 +43,10 @@ public class NJClass extends JComponent{
 	public void setMethods(ArrayList<NJMethod> methods) {
 		this.methods = methods;
 	}
-	public ArrayList<NJConnection> getAggregations() {
+	public ArrayList<NJAggregation> getAggregations() {
 		return aggregations;
 	}
-	public void setAggregations(ArrayList<NJConnection> aggregations) {
+	public void setAggregations(ArrayList<NJAggregation> aggregations) {
 		this.aggregations = aggregations;
 	}
 	public NJInheritance getInheritance() {
@@ -78,6 +80,12 @@ public class NJClass extends JComponent{
 		this.b = b;
 	}
 	
+	public NJAggregation getTempAggregation() {
+		return tempAggregation;
+	}
+	public void setTempAggregation(NJAggregation tempAggregation) {
+		this.tempAggregation = tempAggregation;
+	}
 	NJClass(String name, int x, int y){
 		this.setName(name);
 		this.setFields(new ArrayList<NJField>());
@@ -86,7 +94,7 @@ public class NJClass extends JComponent{
 		this.x=x; //x position in diagram panel of top left corner of box
 		this.y=y; //y position in diagram panel of top left corner of box
 		
-		this.aggregations = new ArrayList<NJConnection>();
+		this.aggregations = new ArrayList<NJAggregation>();
 		this.inheritance = null;
 	}
 
@@ -106,6 +114,19 @@ public class NJClass extends JComponent{
 	
 	public void addMethod(NJMethod m){
 		this.methods.add(m);
+	}
+	
+	public void addAggregation(NJAggregation a){
+		this.aggregations.add(a);
+	}
+	
+	public void deleteAggregation(NJAggregation a){
+		this.aggregations.remove(a);
+	}
+	
+	public void fixTempAggregation(){
+		this.aggregations.add(this.tempAggregation);
+		this.tempAggregation = null;
 	}
 	
 	public void draw(Graphics g, boolean selected){
@@ -161,11 +182,14 @@ public class NJClass extends JComponent{
 	}
 	
 	public void drawConnections(Graphics g){
-		for (NJConnection c : aggregations){
+		for (NJAggregation c : aggregations){
 			c.draw(g, this);
 		}
 		if(this.inheritance != null){
 			this.inheritance.draw(g, this);
+		}
+		if(this.tempAggregation != null){
+			this.tempAggregation.draw(g, this);
 		}
 	}
 

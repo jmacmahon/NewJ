@@ -72,6 +72,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 			gui.getdPanel().getSelected().getInheritance().setXYto(e.getX(), e.getY());
 			gui.getdPanel().repaint();
 		}
+		if(gui.getdPanel().getAggregating() && gui.getdPanel().getSelected() != null && gui.getdPanel().getSelected().getTempAggregation() != null){
+			gui.getdPanel().getSelected().getTempAggregation().setXYto(e.getX(), e.getY());
+			gui.getdPanel().repaint();
+		}
 	}
 
 	@Override
