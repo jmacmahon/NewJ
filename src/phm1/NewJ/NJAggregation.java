@@ -17,6 +17,48 @@ public class NJAggregation extends NJConnection {
 	}
 	public NJAggregation(){}
 
+	public String jRepresentVar(){
+		String out = "private ";
+		if(many){
+			out += "ArrayList<" + this.getTo().getName() + "> ";
+		} else {
+			out += this.getTo().getName() + " ";
+		}
+		out += camelCase(this.getTo().getName()) + ";";
+		return out;
+	}
+	
+	public String jRepresentGetter(){
+		String out = "public ";
+		if(many){
+			out += "ArrayList<" + this.getTo().getName() + "> ";
+		} else {
+			out += this.getTo().getName() + " ";
+		}
+		out += "get" + this.getTo().getName() + "() { return " + camelCase(this.getTo().getName()) + "; }";
+		return out;		
+	}
+	
+	public String jRepresentSetter(){
+		String out = "public void ";
+		out += "set" + this.getTo().getName() + "(";
+		if(many){
+			out += "ArrayList<" + this.getTo().getName() + "> ";
+		} else {
+			out += this.getTo().getName() + " ";
+		}
+		out += camelCase(this.getTo().getName());
+		out += ") { this." + camelCase(this.getTo().getName()) + " = " + camelCase(this.getTo().getName()) + "; }";
+		return out;		
+	}
+	
+	private String camelCase(String inStr){
+		String out = "";
+		out += Character.toLowerCase(inStr.charAt(0));
+		out += inStr.substring(1);
+		return out;
+	}
+	
 	public void draw(Graphics g, NJClass from){
 		super.draw(g,  from, false);
 

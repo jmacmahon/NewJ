@@ -215,14 +215,28 @@ public class NJClass extends JComponent{
 	}
 	
 	public String jRepresent(){
-		String out = "public class " + getName();
+		String out = "";
+		for(NJAggregation a : aggregations)
+			if(a.isMany()){
+				out += "import java.util.ArrayList;\n";
+				break;
+			}
+		out += "public class " + getName();
 		if(this.inheritance != null){
 			out += " extends " + this.inheritance.getTo().getName();
 		}
 		out += " {\n";
+		
+		for(NJAggregation a : aggregations){
+			out += "\t" + a.jRepresentVar() + "\n";
+			out += "\t" + a.jRepresentGetter() + "\n";
+			out += "\t" + a.jRepresentSetter() + "\n";
+		}
+		
 		for (NJField f : fields){
 			out += "\t" + f.jRepresent() + "\n";
 		}
+		
 		for (NJMethod m : methods){
 			out += "\t" + m.jRepresent() + "\n";
 		}
