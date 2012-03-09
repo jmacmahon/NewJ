@@ -241,6 +241,8 @@ public class GUI {
 		while(this.classNameInUse(className)){
 			JOptionPane.showMessageDialog(this.mainFrame, "That class name is already in use.", "Error", JOptionPane.ERROR_MESSAGE);
 			className = this.classNamePrompt();
+			if(className == null)
+				return;
 		}
 		
 		NJClass c = new NJClass(className, 100, 100);
