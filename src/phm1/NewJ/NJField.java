@@ -15,4 +15,8 @@ public class NJField extends NJAbstractProperty {
 	}
 	
 	public NJField(){}
+	
+	public String jRepresent(){
+		return super.jRepresent() + ";";
+	}
 }

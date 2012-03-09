@@ -9,45 +9,13 @@ public class Menus extends JMenuBar{
 	//TODO HEY JOE WHAT OTHER BUTTONS DO YOU WANT IN THE MENU - p
 	JMenu mainMenu, helpMenu;
 	EditMenu editMenu;
-	JMenuItem saveProject, loadProject, exitProgram;
+	JMenuItem saveProject, loadProject, exportProject, exitProgram;
 	JMenuItem helpNew, helpDelete, helpDelAll;
 	MyMenuListener mML;
 	GUI gui;
-
-	public JMenu getMainMenu() {
-		return mainMenu;
-	}
-
-	public EditMenu getEditMenu() {
+	
+	public EditMenu getEditMenu(){
 		return editMenu;
-	}
-
-	public JMenu getHelpMenu() {
-		return helpMenu;
-	}
-
-	public JMenuItem getSaveProject() {
-		return saveProject;
-	}
-
-	public JMenuItem getLoadProject() {
-		return loadProject;
-	}
-
-	public JMenuItem getExitProgram() {
-		return exitProgram;
-	}
-
-	public JMenuItem getHelpNew() {
-		return helpNew;
-	}
-
-	public JMenuItem getHelpDelete() {
-		return helpDelete;
-	}
-
-	public JMenuItem getHelpDelAll() {
-		return helpDelAll;
 	}
 
 	public MyMenuListener getmML() {
@@ -67,7 +35,8 @@ public class Menus extends JMenuBar{
 		editMenu = new EditMenu(gui);
 
 		saveProject = new JMenuItem("Save");
-		loadProject = new JMenuItem("Load");
+		loadProject = new JMenuItem("Open");
+		exportProject = new JMenuItem("Export as .java files");
 		exitProgram = new JMenuItem("Exit");
 
 		helpNew = new JMenuItem("\"New Class\" Help");
@@ -80,6 +49,7 @@ public class Menus extends JMenuBar{
 
 		mainMenu.add(saveProject);
 		mainMenu.add(loadProject);
+		mainMenu.add(exportProject);
 		mainMenu.add(exitProgram);
 		
 		helpMenu.add(helpNew);
@@ -88,6 +58,7 @@ public class Menus extends JMenuBar{
 		
 		saveProject.addActionListener(mML);
 		loadProject.addActionListener(mML);
+		exportProject.addActionListener(mML);
 		exitProgram.addActionListener(mML);
 
 		helpNew.addActionListener(mML);

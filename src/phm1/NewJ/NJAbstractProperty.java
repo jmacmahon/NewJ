@@ -29,4 +29,22 @@ public abstract class NJAbstractProperty extends NJObject {
 		out += this.getName();
 		return out;
 	}
+	
+	public String jRepresent(){
+		String out = "";
+		switch(this.getAccessModifier()){
+		case PUBLIC:
+			out += "public ";
+			break;
+		case PROTECTED:
+			out += "protected ";
+			break;
+		case PRIVATE:
+			out += "private ";
+			break;
+		}
+		out += this.getType() + " ";
+		out += this.getName();
+		return out;
+	}
 }

@@ -68,8 +68,8 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		if(gui.getdPanel().getInheriting() && gui.getdPanel().getSelected().getInherits() != null){
-			gui.getdPanel().getSelected().getInherits().setXYto(e.getX(), e.getY());
+		if(gui.getdPanel().getInheriting() && gui.getdPanel().getSelected().getInheritance() != null){
+			gui.getdPanel().getSelected().getInheritance().setXYto(e.getX(), e.getY());
 			gui.getdPanel().repaint();
 		}
 	}

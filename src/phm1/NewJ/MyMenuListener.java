@@ -2,11 +2,7 @@ package phm1.NewJ;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
-import javax.swing.JFileChooser;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 public class MyMenuListener implements ActionListener{
@@ -18,17 +14,18 @@ public class MyMenuListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent a) {
 		String action = a.getActionCommand();
-		String fileName;
-		JFileChooser chooser = new JFileChooser();
 		
 		
 		if (action.equals("Save")) {
 			gui.chooseAndSave();
 		}
-	
 		
-		else if(action.equals("Load")){
+		else if(action.equals("Open")){
 			gui.chooseAndLoad();
+		}
+		
+		else if(action.equals("Export as .java files")){
+			gui.chooseAndExport();
 		}
 		
 		else if(action.equals("Exit")) {

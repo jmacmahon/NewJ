@@ -1,10 +1,8 @@
 package phm1.NewJ;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.util.ArrayList;
+import java.awt.*;
+import java.io.*;
+import java.util.*;
 
 import javax.swing.JComponent;
 
@@ -17,7 +15,7 @@ public class NJClass extends JComponent{
 	private ArrayList<NJField> fields;
 	private ArrayList<NJMethod> methods;
 	private ArrayList<NJConnection> aggregations;
-	private NJInheritance inherits;
+	private NJInheritance inheritance;
 	
 	//graphics variables
 	private int x;
@@ -49,11 +47,11 @@ public class NJClass extends JComponent{
 	public void setAggregations(ArrayList<NJConnection> aggregations) {
 		this.aggregations = aggregations;
 	}
-	public NJInheritance getInherits() {
-		return inherits;
+	public NJInheritance getInheritance() {
+		return inheritance;
 	}
-	public void setInherits(NJInheritance inherits) {
-		this.inherits = inherits;
+	public void setInheritance(NJInheritance inheritance) {
+		this.inheritance = inheritance;
 	}
 	public int getX() {
 		return x;
@@ -89,7 +87,7 @@ public class NJClass extends JComponent{
 		this.y=y; //y position in diagram panel of top left corner of box
 		
 		this.aggregations = new ArrayList<NJConnection>();
-		this.inherits = null;
+		this.inheritance = null;
 	}
 
 	public NJClass() {}
@@ -166,8 +164,8 @@ public class NJClass extends JComponent{
 		for (NJConnection c : aggregations){
 			c.draw(g, this);
 		}
-		if(this.inherits != null){
-			this.inherits.draw(g, this);
+		if(this.inheritance != null){
+			this.inheritance.draw(g, this);
 		}
 	}
 
@@ -182,5 +180,29 @@ public class NJClass extends JComponent{
 		this.y = y;
 		repaint();
 	}
-	//TODO write something so the box doesn't jump to the mouse when dragged
+	
+	public void export(File directoryHandler) throws IOException{
+		// Exports the class into a .java file
+		File javaFile = new File(directoryHandler, this.getName() + ".java");
+		FileWriter fW = new FileWriter(javaFile);
+		BufferedWriter bW = new BufferedWriter(fW);
+		bW.write(this.jRepresent());
+		bW.close();
+	}
+	
+	public String jRepresent(){
+		String out = "public class " + getName();
+		if(this.inheritance != null){
+			out += " extends " + this.inheritance.getTo().getName();
+		}
+		out += " {\n";
+		for (NJField f : fields){
+			out += "\t" + f.jRepresent() + "\n";
+		}
+		for (NJMethod m : methods){
+			out += "\t" + m.jRepresent() + "\n";
+		}
+		out += "}\n";
+		return out;
+	}
 }

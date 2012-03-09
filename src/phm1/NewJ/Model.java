@@ -72,4 +72,10 @@ public class Model {
 		xd.close();
 		f.close();
 	}
+	
+	public void export(File file) throws IOException {
+		for(NJClass c : classes){
+			c.export(file);
+		}
+	}
 }

@@ -49,4 +49,21 @@ public class NJMethod extends NJAbstractProperty {
 	public void deleteArgument(NJArgument a){
 		arguments.remove(a);
 	}
+	
+	public String jRepresent(){
+		String out = super.jRepresent() + " ";
+		if(arguments.size() == 0){
+			out += "(";
+		} else {
+			for(NJArgument a : arguments){
+				if(a == arguments.get(0))
+					out += "(";
+				else
+					out += ", ";
+				out += a.jRepresent();
+			}
+		}
+		out += ") { }";
+		return out;
+	}
 }

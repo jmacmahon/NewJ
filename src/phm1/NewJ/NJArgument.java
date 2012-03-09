@@ -6,4 +6,8 @@ public class NJArgument extends NJObject {
 		this.setType(type);
 	}
 	public NJArgument(){}
+	
+	public String jRepresent(){
+		return this.getType() + " " + this.getName();
+	}
 }

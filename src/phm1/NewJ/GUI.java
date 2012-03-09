@@ -16,6 +16,7 @@ public class GUI {
 	private MyMenuListener menuListener;
 	private MainFrame mainFrame;
 	private JFileChooser saveLoadChooser;
+	private JFileChooser exportChooser;
 	
 	public Model getModel() {
 		return model;
@@ -49,6 +50,10 @@ public class GUI {
 		return saveLoadChooser;
 	}
 
+	public JFileChooser getExportChooser() {
+		return exportChooser;
+	}
+
 	GUI(Model m) {
 		this.model = m;
 	}
@@ -74,6 +79,8 @@ public class GUI {
 		saveLoadChooser = new JFileChooser();
 		saveLoadChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		saveLoadChooser.setFileFilter(new FileNameExtensionFilter("XML files (.xml)", "xml"));
+		exportChooser = new JFileChooser();
+		exportChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		mainFrame.setVisible(true);
 	}
 	
@@ -159,12 +166,22 @@ public class GUI {
 	}
 	
 	public void chooseAndSave(){
-		if(this.saveLoadChooser.showOpenDialog(this.mainFrame) == JFileChooser.APPROVE_OPTION){
+		if(this.saveLoadChooser.showSaveDialog(this.mainFrame) == JFileChooser.APPROVE_OPTION){
 			try {
 				this.model.save(this.saveLoadChooser.getSelectedFile());
 				dPanel.repaint();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(this.mainFrame, "There was an error saving to the file.", "IOException", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	
+	public void chooseAndExport(){
+		if(this.exportChooser.showDialog(this.mainFrame, "Export") == JFileChooser.APPROVE_OPTION){
+			try {
+				this.model.export(this.exportChooser.getSelectedFile());
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(this.mainFrame, "There was an error exporting the project. Are you exporting to a real directory?", "IOException", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

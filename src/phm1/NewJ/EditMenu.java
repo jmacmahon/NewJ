@@ -83,7 +83,7 @@ public class EditMenu extends JMenu {
 		});
 		this.add(renameClass);
 		
-		if(c.getInherits() == null){
+		if(c.getInheritance() == null){
 			JMenuItem addInheritance = new JMenuItem("Add inherits from");
 			addInheritance.addActionListener(new ActionListener() {
 
@@ -99,7 +99,7 @@ public class EditMenu extends JMenu {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					c.setInherits(null);
+					c.setInheritance(null);
 					gui.getdPanel().repaint();
 					gui.populateEditMenu();
 				}
