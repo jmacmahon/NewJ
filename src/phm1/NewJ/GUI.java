@@ -123,6 +123,7 @@ public class GUI {
 	 */
 	public void deleteAll() {
 		model.clear();
+		dPanel.unselectAll();
 		dPanel.repaint();
 		populateEditMenu();
 	}
@@ -132,6 +133,7 @@ public class GUI {
 	 */
 	public void deleteSelected() {
 		model.removeClass(dPanel.getSelected());
+		dPanel.unselectAll();
 		dPanel.repaint();
 		populateEditMenu();
 	}
