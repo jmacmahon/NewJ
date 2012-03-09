@@ -18,7 +18,6 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		
 	public void mouseClicked(MouseEvent e) {
 		gui.getdPanel().setInheriting(false);
-		gui.getbPanel().getInheritanceButton().getModel().setSelected(false);
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
@@ -69,8 +68,12 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		if(gui.getdPanel().getInheriting() && gui.getdPanel().getSelected().getInherits() != null){
-			gui.getdPanel().getSelected().getInherits().setXYto(e.getX(), e.getY());
+		if(gui.getdPanel().getInheriting() && gui.getdPanel().getSelected().getInheritance() != null){
+			gui.getdPanel().getSelected().getInheritance().setXYto(e.getX(), e.getY());
+			gui.getdPanel().repaint();
+		}
+		if(gui.getdPanel().getAggregating() && gui.getdPanel().getSelected() != null && gui.getdPanel().getSelected().getTempAggregation() != null){
+			gui.getdPanel().getSelected().getTempAggregation().setXYto(e.getX(), e.getY());
 			gui.getdPanel().repaint();
 		}
 	}

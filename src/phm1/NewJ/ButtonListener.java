@@ -18,20 +18,10 @@ public class ButtonListener implements ActionListener {
 		String action = a.getActionCommand();
 
 		if(action.equals("New Class")){ 
-			NJClass c = new NJClass(g.classNamePrompt(), 100, 100);
-			g.addClass(c);
+			g.newClass();
 
 			//TODO put the box somewhere useful - maybe work out where is blank on the screen
 			//TODO work out a sensible size for the box based on input text
-		}
-
-
-		else if(action.equals("Add Inheritance")){
-			g.getdPanel().setInheriting(g.getbPanel().getInheritanceButton().getModel().isSelected());
-			if(g.getdPanel().getInheriting() != g.getbPanel().getInheritanceButton().getModel().isSelected()){
-				JOptionPane.showMessageDialog(g.getMainFrame(), "You must select a class first!", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-			g.getbPanel().getInheritanceButton().getModel().setSelected(g.getdPanel().getInheriting());
 		}
 
 
@@ -45,15 +35,6 @@ public class ButtonListener implements ActionListener {
 			//deletes all boxes
 		}
 		//moved save and load to the menu - p
-		
-		else if (action.equals("Add Method")) {
-			c=g.getdPanel().getSelected();
-			String methodName;
-			if (c!=null) {
-				methodName = JOptionPane.showInputDialog("enter method name");
-				g.newMethod(c, methodName);
-			}
-		}
 	}
 
 }

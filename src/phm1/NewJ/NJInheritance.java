@@ -2,35 +2,72 @@ package phm1.NewJ;
 
 import java.awt.Graphics;
 
+/**
+ * Represents class A inheriting from class B in NewJ.
+ * @author n3hima
+ */
 public class NJInheritance extends NJConnection {
-	NJInheritance(NJClass to){
+	public NJInheritance(NJClass to){
 		super(to);
 	}
-	NJInheritance(){
-		super();
-	}
+	public NJInheritance(){}
 	
+	/**
+	 * Draws the line on the screen, with the inheritance arrow.
+	 * @param g
+	 * @param from The class which is inheriting
+	 */
 	public void draw (Graphics g, NJClass from){
-		super.draw(g, from);
+		super.draw(g, from, true);
 		int vertexAX, vertexAY, vertexBX, vertexBY, vertexCX, vertexCY;
 		vertexAX = vertexAY = vertexBX = vertexBY = vertexCX = vertexCY = 0;
 		
-		// TODO For fuck's sake put all of this shit in java.awt.Point objects... - J
 		if(this.getTo() == null){
 			//TODO
 		} else {
-			if(this.isHorizontal()){
-				// Vertical
-				if(this.getyTo() < this.getyFrom()){
-					vertexAX = this.getxTo();
-					vertexAY = this.getTo().getY() + this.getTo().getB();
-					
-					vertexBX = this.getxTo() + 5;
-					vertexBY = this.getTo().getY() + this.getTo().getB() + 10;
-					
-					vertexCX = this.getxTo() - 5;
-					vertexCY = this.getTo().getY() + this.getTo().getB() + 10;
+			if(this.getTo().getY() < this.getYFrom() && (this.getTo().getY() + this.getTo().getB()) > this.getYFrom()){
+				// Actually hitting the horizontal side
+				if(this.getXTo() < this.getXFrom()){
+					// Arrow pointing left
+					vertexAX = this.getTo().getX() + this.getTo().getA();
+					vertexAY = this.getYFrom();
+
+					vertexBX = vertexAX + 10;
+					vertexBY = vertexAY - 5;
+
+					vertexCX = vertexAX + 10;
+					vertexCY = vertexAY + 5;
+				} else {
+					// Arrow pointing right
+					vertexAX = this.getTo().getX();
+					vertexAY = this.getYFrom();
+
+					vertexBX = vertexAX - 10;
+					vertexBY = vertexAY + 5;
+
+					vertexCX = vertexAX - 10;
+					vertexCY = vertexAY - 5;
 				}
+			} else if(this.getYTo() < this.getYFrom()){
+				// Hitting the bottom
+				vertexAX = this.getXTo();
+				vertexAY = this.getTo().getY() + this.getTo().getB();
+
+				vertexBX = vertexAX + 5;
+				vertexBY = vertexAY + 10;
+
+				vertexCX = vertexAX - 5;
+				vertexCY = vertexAY + 10;
+			} else {
+				// Hitting the top
+				vertexAX = this.getXTo();
+				vertexAY = this.getTo().getY();
+
+				vertexBX = vertexAX - 5;
+				vertexBY = vertexAY - 10;
+
+				vertexCX = vertexAX + 5;
+				vertexCY = vertexAY - 10;
 			}
 		}
 		g.drawLine(vertexAX, vertexAY, vertexBX, vertexBY);

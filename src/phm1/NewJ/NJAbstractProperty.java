@@ -1,5 +1,10 @@
 package phm1.NewJ;
 
+/**
+ * Describes a property of a class within NewJ: it is an NJObject with an access modifier.
+ * @author n3hima
+ *
+ */
 public abstract class NJAbstractProperty extends NJObject {
 	
 	private NJAccessModifier accessModifier;
@@ -12,6 +17,10 @@ public abstract class NJAbstractProperty extends NJObject {
 		this.accessModifier = accessModifier;
 	}
 	
+	/**
+	 * Gives a String representing this property in a class diagram
+	 * @return String representation
+	 */
 	public String getDisplayString(){
 		String out = "";
 		switch(this.getAccessModifier()){
@@ -25,7 +34,24 @@ public abstract class NJAbstractProperty extends NJObject {
 			out += "-";
 			break;
 		}
-		out += "";
+		out += this.getName();
+		return out;
+	}
+	
+	public String jRepresent(){
+		String out = "";
+		switch(this.getAccessModifier()){
+		case PUBLIC:
+			out += "public ";
+			break;
+		case PROTECTED:
+			out += "protected ";
+			break;
+		case PRIVATE:
+			out += "private ";
+			break;
+		}
+		out += this.getType() + " ";
 		out += this.getName();
 		return out;
 	}
