@@ -123,6 +123,7 @@ public class GUI {
 	 */
 	public void deleteAll() {
 		model.clear();
+		dPanel.unselectAll();
 		dPanel.repaint();
 		populateEditMenu();
 	}
@@ -132,6 +133,7 @@ public class GUI {
 	 */
 	public void deleteSelected() {
 		model.removeClass(dPanel.getSelected());
+		dPanel.unselectAll();
 		dPanel.repaint();
 		populateEditMenu();
 	}
@@ -239,6 +241,8 @@ public class GUI {
 		while(this.classNameInUse(className)){
 			JOptionPane.showMessageDialog(this.mainFrame, "That class name is already in use.", "Error", JOptionPane.ERROR_MESSAGE);
 			className = this.classNamePrompt();
+			if(className == null)
+				return;
 		}
 		
 		NJClass c = new NJClass(className, 100, 100);

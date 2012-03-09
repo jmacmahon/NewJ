@@ -1,5 +1,6 @@
 package phm1.NewJ;
 import java.awt.event.*;
+import java.lang.Math;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
@@ -59,6 +60,11 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		if (box !=null){
 			int newX = e.getX() - this.offsetX;
 			int newY = e.getY() - this.offsetY;
+			newX = Math.max(newX, 0);
+			newX = Math.min(newX, gui.getdPanel().getWidth() - box.getA());
+
+			newY = Math.max(newY, 0);
+			newY = Math.min(newY, gui.getdPanel().getHeight() - box.getB());
 			// Moves relative to the cursor - J
 			box.update(newX, newY);
 			gui.getdPanel().repaint();
