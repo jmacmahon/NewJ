@@ -5,16 +5,27 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * The EditMenu class extends JMenu to provide a dynamic Edit menu for a selected NJClass element.
+ * @author n3hima
+ */
 public class EditMenu extends JMenu {
-	JMenu fields, methods, aggregations;
-	GUI gui;
-	NJClass njClass;
+	private JMenu fields, methods, aggregations;
+	private GUI gui;
+	private NJClass njClass;
 	
+	/**
+	 * Constructor method
+	 * @param g To set the GUI singleton
+	 */
 	EditMenu(GUI g){
 		super("Edit");
 		gui = g;
 	}
 	
+	/**
+	 * Empty the Edit menu when no class is selected, and show a placeholder disabled item
+	 */
 	public void populate(){
 		this.removeAll();
 		JMenuItem disabled = new JMenuItem("There is no class selected");
@@ -22,6 +33,10 @@ public class EditMenu extends JMenu {
 		this.add(disabled);
 	}
 	
+	/**
+	 * Populate the Edit menu when a class is selected with the relevant information
+	 * @param c The selected class
+	 */
 	public void populate(final NJClass c){
 		this.removeAll();
 		this.njClass = c;
@@ -182,7 +197,7 @@ public class EditMenu extends JMenu {
 			});
 		}
 	}
-	
+
 	private class MethodMenu extends AbstractPropertyMenu {
 		private NJMethod method;
 		
@@ -288,10 +303,10 @@ public class EditMenu extends JMenu {
 			}
 		}
 	}
-	
+
 	private class FieldMenu extends AbstractPropertyMenu {
 		private NJField field;
-
+		
 		FieldMenu(final NJField f){
 			super(f);
 			this.field = f;
@@ -328,7 +343,7 @@ public class EditMenu extends JMenu {
 		private NJAggregation aggregation;
 		private JMenuItem delete;
 		private JMenu changeNumber;
-		
+
 		AggregationMenu(NJAggregation a){
 			super(a.getTo().getName());
 			this.aggregation = a;
