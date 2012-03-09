@@ -18,7 +18,6 @@ public class MyMouseListener implements MouseListener, MouseMotionListener, Popu
 		
 	public void mouseClicked(MouseEvent e) {
 		gui.getdPanel().setInheriting(false);
-		gui.getbPanel().getInheritanceButton().getModel().setSelected(false);
 	}
 
 	public void mouseEntered(MouseEvent arg0) {

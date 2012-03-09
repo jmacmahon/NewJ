@@ -26,15 +26,6 @@ public class ButtonListener implements ActionListener {
 		}
 
 
-		else if(action.equals("Add Inheritance")){
-			g.getdPanel().setInheriting(g.getbPanel().getInheritanceButton().getModel().isSelected());
-			if(g.getdPanel().getInheriting() != g.getbPanel().getInheritanceButton().getModel().isSelected()){
-				JOptionPane.showMessageDialog(g.getMainFrame(), "You must select a class first!", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-			g.getbPanel().getInheritanceButton().getModel().setSelected(g.getdPanel().getInheriting());
-		}
-
-
 		else if(action.equals("Delete Selected")){
 			g.deleteSelected();
 			//deletes selected box
@@ -45,15 +36,6 @@ public class ButtonListener implements ActionListener {
 			//deletes all boxes
 		}
 		//moved save and load to the menu - p
-		
-		else if (action.equals("Add Method")) {
-			c=g.getdPanel().getSelected();
-			String methodName;
-			if (c!=null) {
-				methodName = JOptionPane.showInputDialog("enter method name");
-				g.newMethod(c, methodName);
-			}
-		}
 	}
 
 }

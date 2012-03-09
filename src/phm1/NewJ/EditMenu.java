@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class EditMenu extends JMenu {
-	JMenuItem renameClass;
 	JMenu fields;
 	JMenu methods;
 	GUI gui;
@@ -16,6 +15,14 @@ public class EditMenu extends JMenu {
 		super("Edit");
 		gui = g;
 	}
+	
+	public void populate(){
+		this.removeAll();
+		JMenuItem disabled = new JMenuItem("There is no class selected");
+		disabled.setEnabled(false);
+		this.add(disabled);
+	}
+	
 	public void populate(final NJClass c){
 		this.removeAll();
 		this.njClass = c;
@@ -61,7 +68,7 @@ public class EditMenu extends JMenu {
 		methods.add(addMethod);
 		this.add(fields);
 		this.add(methods);
-		renameClass = new JMenuItem("Rename Class");
+		JMenuItem renameClass = new JMenuItem("Rename Class");
 		renameClass.addActionListener(new ActionListener() {
 			
 			@Override
@@ -75,6 +82,30 @@ public class EditMenu extends JMenu {
 			}
 		});
 		this.add(renameClass);
+		
+		if(c.getInherits() == null){
+			JMenuItem addInheritance = new JMenuItem("Add inherits from");
+			addInheritance.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					gui.getdPanel().setInheriting(true);
+				}
+			});
+			this.add(addInheritance);
+		} else {
+			JMenuItem removeInheritance = new JMenuItem("Delete inherits from");
+			removeInheritance.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					c.setInherits(null);
+					gui.getdPanel().repaint();
+					gui.populateEditMenu();
+				}
+			});
+			this.add(removeInheritance);
+		}
 	}
 	
 	private abstract class AbstractPropertyMenu extends JMenu {

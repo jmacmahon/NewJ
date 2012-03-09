@@ -67,6 +67,7 @@ public class GUI {
 		menus = new Menus(this);
 		mouseListener= new MyMouseListener(this);
 		mainFrame = new MainFrame(this);
+		populateEditMenu();
 		mainFrame.setVisible(true);
 	}
 	
@@ -135,7 +136,7 @@ public class GUI {
 		if(dPanel.getSelected() != null){
 			populateEditMenu(dPanel.getSelected());
 		} else {
-			// TODO
+			getMenus().getEditMenu().populate();
 		}
 	}
 }
