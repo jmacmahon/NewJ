@@ -2,9 +2,17 @@ package phm1.NewJ;
 
 import java.awt.*;
 
+/**
+ * Represents class B being aggregated in class A: i.e. A having a link to B.
+ * @author n3hima
+ */
 public class NJAggregation extends NJConnection {
 	private boolean many;
 	
+	/**
+	 * Whether aggregation is [0..*] (many) or [0..1] (one)
+	 * @return True if many
+	 */
 	public boolean isMany() {
 		return many;
 	}
@@ -17,6 +25,10 @@ public class NJAggregation extends NJConnection {
 	}
 	public NJAggregation(){}
 
+	/**
+	 * Represents the field as Java code
+	 * @return Java code
+	 */
 	public String jRepresentVar(){
 		String out = "private ";
 		if(many){
@@ -28,6 +40,10 @@ public class NJAggregation extends NJConnection {
 		return out;
 	}
 	
+	/**
+	 * Represents the getter as Java code
+	 * @return Java code
+	 */
 	public String jRepresentGetter(){
 		String out = "public ";
 		if(many){
@@ -39,6 +55,10 @@ public class NJAggregation extends NJConnection {
 		return out;		
 	}
 	
+	/**
+	 * Represents the setter as Java code
+	 * @return Java code
+	 */
 	public String jRepresentSetter(){
 		String out = "public void ";
 		out += "set" + this.getTo().getName() + "(";
@@ -59,6 +79,11 @@ public class NJAggregation extends NJConnection {
 		return out;
 	}
 	
+	/**
+	 * Draws the line on the screen, with the aggregation arrow.
+	 * @param g
+	 * @param from The class which is aggregating
+	 */
 	public void draw(Graphics g, NJClass from){
 		super.draw(g,  from, false);
 

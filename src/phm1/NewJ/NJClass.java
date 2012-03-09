@@ -7,7 +7,11 @@ import java.util.*;
 import javax.swing.JComponent;
 
 
-// TODO Separate the JComponent-inheriting parts from the parts which store the actual class data, because mixing GUI and Model is a Bad Thing (tm)
+/**
+ * Represents a class within NewJ, both data and graphics.
+ * @author n3hima
+ *
+ */
 public class NJClass extends JComponent{
 
 	//non graphics variables
@@ -67,19 +71,30 @@ public class NJClass extends JComponent{
 	public void setY(int y) {
 		this.y = y;
 	}
+	/**
+	 * The width
+	 * @return Width in pixels
+	 */
 	public int getA() {
 		return a;
 	}
 	public void setA(int a) {
 		this.a = a;
 	}
+	/**
+	 * The height
+	 * @return Height in pixels
+	 */
 	public int getB() {
 		return b;
 	}
 	public void setB(int b) {
 		this.b = b;
 	}
-	
+	/**
+	 * Used when assigning an aggregation, but the user has not chosen a class yet
+	 * @return The temporary aggregation
+	 */
 	public NJAggregation getTempAggregation() {
 		return tempAggregation;
 	}
@@ -100,35 +115,63 @@ public class NJClass extends JComponent{
 
 	public NJClass() {}
 
+	/**
+	 * Add a field to the class
+	 * @param f The field to be added
+	 */
 	public void addField(NJField f){
 		this.fields.add(f);
 	}
-	
+	/**
+	 * Remove a field from the class
+	 * @param f The field to be removed
+	 */
 	public void deleteField(NJField f){
 		this.fields.remove(f);
 	}
 	
+	/**
+	 * Remove a method from the class
+	 * @param m The method to be removed
+	 */
 	public void deleteMethod(NJMethod m){
 		this.methods.remove(m);
 	}
-	
+	/**
+	 * Add a method to the class
+	 * @param m The method to be added
+	 */
 	public void addMethod(NJMethod m){
 		this.methods.add(m);
 	}
 	
+	/**
+	 * Add an aggregation to the class
+	 * @param a The aggregation to be added
+	 */
 	public void addAggregation(NJAggregation a){
 		this.aggregations.add(a);
 	}
-	
+	/**
+	 * Remove an aggregation from the class
+	 * @param a The aggregation t be removed
+	 */
 	public void deleteAggregation(NJAggregation a){
 		this.aggregations.remove(a);
 	}
-	
+	/**
+	 * Make a temporary aggregation permanent. Move the value in tempAggregation to the array of aggregations and set tempAggregation to null.
+	 */
 	public void fixTempAggregation(){
 		this.aggregations.add(this.tempAggregation);
 		this.tempAggregation = null;
 	}
 	
+	/**
+	 * Draw the class in a UML class box on the diagram panel
+	 * @param g
+	 * @param selected Whether this class is selected or not
+	 */
 	public void draw(Graphics g, boolean selected){
 		Font font = new Font("Courier New", Font.PLAIN, 12);
 		String max = "";
@@ -181,6 +224,10 @@ public class NJClass extends JComponent{
 
 	}
 	
+	/**
+	 * Draw all the connections (aggregations and inheritance) of this class on the diagram panel
+	 * @param g
+	 */
 	public void drawConnections(Graphics g){
 		for (NJAggregation c : aggregations){
 			c.draw(g, this);
@@ -193,11 +240,11 @@ public class NJClass extends JComponent{
 		}
 	}
 
-	public int distanceTo(int x, int y) {
-		//work out the distance between the mouse and the top left corner of the box
-		return (Math.abs(this.x-x) + Math.abs(this.y-y));
-	}
-
+	/**
+	 * Update the position of the class box and repaint
+	 * @param x The x-coordinate
+	 * @param y The y-coordinate
+	 */
 	public void update(int x, int y){
 		//update the position of the box as it is dragged
 		this.x = x;
@@ -205,6 +252,11 @@ public class NJClass extends JComponent{
 		repaint();
 	}
 	
+	/**
+	 * Export the class into a .java file, using jRepresent
+	 * @param directoryHandler The directory to export into
+	 * @throws IOException
+	 */
 	public void export(File directoryHandler) throws IOException{
 		// Exports the class into a .java file
 		File javaFile = new File(directoryHandler, this.getName() + ".java");

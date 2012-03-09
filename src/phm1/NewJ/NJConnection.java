@@ -4,6 +4,11 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
+/** 
+ * Represents an abstract connection between two classes A and B in NewJ. It is a member of A and keeps B as a member.
+ * @author n3hima
+ *
+ */
 public abstract class NJConnection extends JComponent {
 	private NJClass to;
 	private int xTo;
@@ -57,6 +62,12 @@ public abstract class NJConnection extends JComponent {
 		this.to = to;
 	}
 	
+	/**
+	 * Draws this connection on the GUI as a line between the two classes
+	 * @param g
+	 * @param from The originating class
+	 * @param horizontal Whether to originate horizontally or not
+	 */
 	public void draw (Graphics g, NJClass from, boolean horizontal) {
 		if(to != null){
 			xTo = to.getX() + (to.getA() / 2);
@@ -73,6 +84,11 @@ public abstract class NJConnection extends JComponent {
 		}
 	}
 
+	/**
+	 * Sets the destination of the connection, when no 'to' class is present
+	 * @param x
+	 * @param y
+	 */
 	public void setXYto(int x, int y){
 		this.xTo = x;
 		this.yTo = y;

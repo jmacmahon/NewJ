@@ -2,12 +2,21 @@ package phm1.NewJ;
 
 import java.awt.Graphics;
 
+/**
+ * Represents class A inheriting from class B in NewJ.
+ * @author n3hima
+ */
 public class NJInheritance extends NJConnection {
 	public NJInheritance(NJClass to){
 		super(to);
 	}
 	public NJInheritance(){}
 	
+	/**
+	 * Draws the line on the screen, with the inheritance arrow.
+	 * @param g
+	 * @param from The class which is inheriting
+	 */
 	public void draw (Graphics g, NJClass from){
 		super.draw(g, from, true);
 		int vertexAX, vertexAY, vertexBX, vertexBY, vertexCX, vertexCY;
