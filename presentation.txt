@@ -1,0 +1,25 @@
+First slide - 1 minute (max?):
+How we divided things up
+Joe - Model and back-end classes implementing the abstracted concepts
+Phoebe - GUI aspects and Swing code
+
+Second slide 2 minutes:
+[Phoebe's bit -- fill in]
+Subsection of UML diagram
+
+Third slide 2 minutes:
+Joe's bit: backend and edit menu, exporting
+Subsection of UML
+
+Fourth slide 1 minute:
+Interfacing between GUI and Model
+
+Demonstration 3 minutes:
+- Adding class w/ methods, fields etc
+- Adding inheritance
+- Adding aggregation
+
+Things we could have done better 2 minutes:
+Undo
+UI design improvements e.g. right-click
+Validation/sanitisation of names (class, method, field)
