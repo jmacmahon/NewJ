@@ -4,9 +4,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * This class extends JMenuBar, and contains all the code for how the menus look. It has a corresponding menu listener to implement any actions performed from the menus
+ * @author Phoebe
+ *
+ */
 public class Menus extends JMenuBar{
 
-	//TODO HEY JOE WHAT OTHER BUTTONS DO YOU WANT IN THE MENU - p
 	JMenu mainMenu, helpMenu;
 	EditMenu editMenu;
 	JMenuItem saveProject, loadProject, exportProject, exitProgram;
@@ -14,18 +18,34 @@ public class Menus extends JMenuBar{
 	MyMenuListener mML;
 	GUI gui;
 	
+	/**
+	 * gets the edit menu
+	 * @return The EditMenu stored in the Menu class
+	 */
 	public EditMenu getEditMenu(){
 		return editMenu;
 	}
-
+	
+	/**
+	 * gets the listener for the menu
+	 * @return the MyMenuListener stored in the Menu class
+	 */
 	public MyMenuListener getmML() {
 		return mML;
 	}
 
+	/**
+	 * gets the GUI object
+	 * @return the GUI stored in the Menu class
+	 */
 	public GUI getGui() {
 		return gui;
 	}
 
+	/**
+	 * Create a new Menu
+	 * @param g
+	 */
 	public Menus(GUI g){
 		this.gui = g;
 		mML = new MyMenuListener(gui);

@@ -4,7 +4,11 @@ Joe - Model and back-end classes implementing the abstracted concepts
 Phoebe - GUI aspects and Swing code
 
 Second slide 2 minutes:
-[Phoebe's bit -- fill in]
+bullet points:
+basic look of entire program first
+basic button panel and menus second - print lines to show working
+diagram panel next
+popups and more detailed menu options last
 Subsection of UML diagram
 
 Third slide 2 minutes:
